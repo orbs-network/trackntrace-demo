@@ -1,48 +1,5 @@
 import {observable} from "mobx";
-
-interface IRawScanRecord {
-    "ProductID": string,
-    "EventTimeUTC": string,
-    "BusinessParty": string,
-    "EventTimeUTCMS": number,
-    "BusinessLocationID": string,
-    "EventTimeZoneOffsetMS": number
-}
-
-export class ScanRecord {
-    constructor(public raw: IRawScanRecord) {}
-
-    itemId(): string {
-        return this.raw.ProductID;
-    }
-
-    timestampInSeconds(): number {
-        return this.timestampInMilliseconds() / 1000;
-    }
-
-    timestampInMilliseconds(): number {
-        return this.raw.EventTimeUTCMS;
-    }
-
-    timestampAsDate(): Date {
-        return new Date(this.timestampInMilliseconds());
-    }
-
-    partner(): string {
-        return this.raw.BusinessParty
-    }
-
-    stage(): string {
-        return 'TODO_' + this.raw.BusinessLocationID + '_TODO'
-    }
-
-    recordId(): string {
-        // TODO - get from server
-        const hashCode = s => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
-        return hashCode(JSON.stringify(this.raw));
-    }
-
-}
+import {IRawScanRecord, ScanRecord} from "./record";
 
 export class RecordStore {
 

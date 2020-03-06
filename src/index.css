@@ -135,13 +135,20 @@ html, body, #root {
   margin: 20px 20px 0 20px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.databox .databox-infotext .databox-subtext{
+  font-size: 15px;
+  font-weight: normal;
+}
+
 .item-table td {
   padding: 0 30px;
-  border-right: 1px solid #ebedf8
+  border-right: 1px solid #ebedf8;
+  white-space: nowrap;
 }
 
 .item-table td:last-child {
@@ -174,6 +181,7 @@ html, body, #root {
   color: #484848;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap;
 }
 
 .item-history-table td.record-id-cell {
@@ -189,4 +197,24 @@ html, body, #root {
   padding: 5px;
   background-color: #769806;
   border-radius: 100%;
+}
+
+.alerts-table {
+  border-collapse: collapse;
+  margin: 0 20px 0 20px;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.alerts-table td {
+  border: solid 0.5px #97979750;
+  padding: 10px;
+  color: #4d4d4d;
+  font-size: 14px;
+}
+
+.alerts-table tr:first-child td {
+  color: #6b6c6d;
+  font-size: 10px;
+  letter-spacing: 1.49px;
 }

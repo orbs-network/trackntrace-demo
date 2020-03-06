@@ -1,6 +1,13 @@
-import {ScanRecord, RecordStore} from "./record-store";
+import {RecordStore} from "./record-store";
 import * as _ from "lodash";
 import {computed} from "mobx";
+import {ScanRecord} from "./record";
+
+export interface IAlert {
+    timestamp: Date,
+    itemId: string,
+    description: string
+}
 
 export class Statistics {
 
@@ -9,7 +16,8 @@ export class Statistics {
     @computed get avgRecordsPerItem(): number {
         return _.chain(this.recordsStore.records)
             .groupBy(r => r.itemId())
-            .mapValues((pRecs: ScanRecord[]) => pRecs.length)
+            .values()
+            .map((pRecs: ScanRecord[]) => pRecs.length)
             .mean()
             .value() || 0
     }
@@ -64,5 +72,13 @@ export class Statistics {
             .groupBy(r => r.stage())
             .mapValues(recs => recs.length)
             .value()
+    }
+
+    @computed get alerts(): IAlert[] {
+        return [{
+          timestamp: new Date(),
+          description: 'TODO description',
+          itemId: 'TODO item id'
+        }]
     }
 }

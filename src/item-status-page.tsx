@@ -3,6 +3,8 @@ import * as _ from "lodash";
 import {inject, observer} from "mobx-react";
 import {Statistics} from "./statistics";
 
+const twodigits = (n:number) => (n < 10 ? '0' : '') + n.toString();
+
 @inject("statistics")
 @observer
 export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}> {
@@ -29,7 +31,8 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                 padding: 37,
                 display: 'flex',
                 flexDirection: 'row',
-                marginRight: 30
+                marginRight: 30,
+                overflow: "auto"
             }}>
                 <div>
                     <div style={{
@@ -105,10 +108,10 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                     <td className={'record-id-cell'}>Record {r.recordId()}</td>
                                     <td>{r.partner()}</td>
                                     <td>{r.stage()}</td>
-                                    <td>{`${r.timestampAsDate().getDay()} ${r.timestampAsDate().toLocaleString('default', { month: 'short' })}`}</td>
-                                    <td>{`${r.timestampAsDate().getHours()}:${r.timestampAsDate().getMinutes()}`}</td>
+                                    <td>{`${twodigits(r.timestampAsDate().getDate())} ${r.timestampAsDate().toLocaleString('default', { month: 'short' })}, ${r.timestampAsDate().getFullYear()}`}</td>
+                                    <td>{`${twodigits(r.timestampAsDate().getHours())}:${twodigits(r.timestampAsDate().getMinutes())}`}</td>
                                     <td className={'status-cell'}><div>OK</div></td>
-                                    <td></td>
+                                    <td style={{color: "grey", fontWeight: "normal"}}>N/A</td>
                                 </tr>)
                         }
                     </table>

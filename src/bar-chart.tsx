@@ -33,10 +33,21 @@ function Bar(props: {
             display: 'flex',
             flexDirection: 'column',
             fontSize: 16 * scale,
-            color: "#060606"
+            color: "#060606",
+            alignItems: 'center'
         }}>
-            <img src={image} alt={label} style={{paddingTop: 30*scale, paddingBottom: 5*scale}}/>
-            <span style={{textAlign:'center', paddingBottom: 20*scale, wordBreak: 'break-all'}}>{label}</span>
+            <div style={{
+                height: 70 * scale,
+                minHeight: 70 * scale,
+                width: 70 * scale,
+                minWidth: 70 * scale,
+                marginTop: 20 * scale,
+                backgroundImage: `url(${image})`,
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'contain'
+            }}/>
+            <span style={{textAlign:'center', paddingTop: 5, paddingBottom: 20*scale, wordBreak: 'break-word'}}>{label}</span>
         </div>
     </div>
 }
@@ -67,6 +78,15 @@ export class BarChart extends React.Component<{
                     percent={maxValue == 0 ? 0 : values[i] / maxValue}
                 />
             )}
+            {/*{[labels[0], labels[1], labels[2], labels[3]].map(*/}
+            {/*    (l, i) => <Bar*/}
+            {/*        label={labels[i]}*/}
+            {/*        value={values[i]}*/}
+            {/*        image={images[i]}*/}
+            {/*        color={colors[i % colors.length]}*/}
+            {/*        percent={maxValue == 0 ? 0 : values[i] / maxValue}*/}
+            {/*    />*/}
+            {/*)}*/}
         </div>
     }
 
