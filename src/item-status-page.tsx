@@ -41,7 +41,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
         const uid = this.selected;
         if (uid) {
             this.ready = false;
-            setTimeout(() => this.ready = true, 1000);
+            setTimeout(() => this.ready = true, 800);
         }
     }
 

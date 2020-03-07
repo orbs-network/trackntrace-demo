@@ -13,7 +13,7 @@ export class RecordStore {
             await this.fetch();
             setTimeout(f, pollingIntervalMs)
         };
-        setTimeout(() => f(), 150);
+        setTimeout(() => f(), 1500);
     }
 
     public async fetch() {
