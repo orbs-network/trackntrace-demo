@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import {computed} from "mobx";
 import {ScanRecord} from "./record";
 
-export type AlertType = 'Repeated Scan' | 'Too Many Scans';
+export type AlertType = 'Repeated Scan' | 'Too Many Scans' | 'Adjacent Scans';
 export interface IAlert {
     timestamp: Date,
     alertType: AlertType,
@@ -20,6 +20,11 @@ export interface ITooManyScansAlert extends IAlert {
     count: number
 }
 export const TooManyScansAlertThreshold = 10;
+
+export interface IAdjacentScansAlert extends IAlert {
+    deltaInMs: number
+}
+export const AdjacentScansAlertThresholdMs = 15 * 60 * 1000;
 
 export class Statistics {
 
@@ -72,6 +77,10 @@ export class Statistics {
         return this.recordsStore.records.filter(r => r.itemId() == itemId);
     }
 
+    public itemRecordsSortedByTime(itemId: string): ScanRecord[] {
+        return _.sortBy(this.itemRecords(itemId), r => r.timestampInMilliseconds());
+    }
+
     @computed get itemCountByPartner(): {[partnerName: string]: number} {
         return _.chain(this.latestRecordsPerItem)
             .groupBy(r => r.partner())
@@ -88,14 +97,15 @@ export class Statistics {
 
     @computed get alerts(): IAlert[] {
         return (this.repeatedScanAlerts as IAlert[])
-            .concat(this.tooManyScansAlerts as IAlert[]);
+            .concat(this.tooManyScansAlerts)
+            .concat(this.adjacentScansAlert);
     }
 
     @computed get repeatedScanAlerts(): IRepeatedScanAlert[] {
         const alerts: IRepeatedScanAlert[] = [];
         for (const uid of this.itemUIDs) {
             const seenAt = {};
-            const records = this.itemRecords(uid);
+            const records = this.itemRecordsSortedByTime(uid);
             for (let i = 0; i < records.length; i++) {
                 const rec = records[i];
                 const loc = rec.location();
@@ -116,9 +126,30 @@ export class Statistics {
         return alerts;
     }
 
+    @computed get adjacentScansAlert(): IAdjacentScansAlert[] {
+        const alerts: IAdjacentScansAlert[] = [];
+        for (const uid of this.itemUIDs) {
+            const records = this.itemRecordsSortedByTime(uid);
+            for (let i = 1; i < records.length; i++) {
+                const rec = records[i];
+                const delta = (records[i].timestampInMilliseconds() - records[i - 1].timestampInMilliseconds());
+                if (records[i].location() != records[i - 1].location() && delta < AdjacentScansAlertThresholdMs) {
+                    alerts.push({
+                        timestamp: rec.timestampAsDate(),
+                        alertType: 'Adjacent Scans',
+                        itemId: rec.itemId(),
+                        deltaInMs: delta
+                    });
+                    break;
+                }
+            }
+        }
+        return alerts;
+    }
+
     @computed get tooManyScansAlerts(): ITooManyScansAlert[] {
         return this.itemUIDs
-            .map(uid => this.itemRecords(uid))
+            .map(uid => this.itemRecordsSortedByTime(uid))
             .filter(records => records.length > TooManyScansAlertThreshold)
             .map(records => ({
                 timestamp: records[TooManyScansAlertThreshold].timestampAsDate(),

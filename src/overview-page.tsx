@@ -1,7 +1,14 @@
 import React from "react";
 import * as _ from 'lodash';
 import {inject, observer} from "mobx-react";
-import {IAlert, IRepeatedScanAlert, ITooManyScansAlert, Statistics, TooManyScansAlertThreshold} from "./statistics";
+import {
+    AdjacentScansAlertThresholdMs, IAdjacentScansAlert,
+    IAlert,
+    IRepeatedScanAlert,
+    ITooManyScansAlert,
+    Statistics,
+    TooManyScansAlertThreshold
+} from "./statistics";
 import {BarChart} from "./bar-chart";
 import {observable, toJS} from "mobx";
 import {partnerBrandImage, stageImage} from "./resources";
@@ -43,6 +50,7 @@ export class OverviewPage extends React.Component<{
         const stages = Object.keys(toJS(byStage)).sort();
         const repeatedScanAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Repeated Scan').length;
         const tooManyAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Too Many Scans').length;
+        const adjacentScansAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Adjacent Scans').length;
         const alertCount = this.props.statistics.alerts.length;
 
         return <div style={{
@@ -109,6 +117,7 @@ export class OverviewPage extends React.Component<{
                             <ul>
                                 {repeatedScanAlertsCount > 0 && <li><b>{repeatedScanAlertsCount}</b> item{repeatedScanAlertsCount > 1 ? 's were' : ' was'} rescanned in a previous location (<i>Repeated-Scan-Alert</i>).</li>}
                                 {tooManyAlertsCount > 0 && <li><b>{tooManyAlertsCount}</b> item{tooManyAlertsCount > 1 ? 's were' : ' was'} scanned more than {TooManyScansAlertThreshold} times (<i>Too-Many-Scans-Alert</i>).</li>}
+                                {adjacentScansAlertsCount > 0 && <li><b>{adjacentScansAlertsCount}</b> item{adjacentScansAlertsCount > 1 ? 's were' : ' was'} scanned in two or more different locations within a period of less than {AdjacentScansAlertThresholdMs / 1000 / 60} minutes (<i>Adjacent-Scans-Alert</i>).</li>}
                             </ul>
                             <table className={"alerts-table"}>
                                 <tr>
@@ -128,6 +137,8 @@ export class OverviewPage extends React.Component<{
                                                 <span> Item was scanned twice at location <i>{(alert as IRepeatedScanAlert).location}</i> (previous scan was at {(alert as IRepeatedScanAlert).prevTime.toDateString()})</span>
                                             : alert.alertType == 'Too Many Scans' ?
                                                 <span> Item was scanned <b>{(alert as ITooManyScansAlert).count}</b> times</span>
+                                            : alert.alertType == 'Adjacent Scans' ?
+                                                <span> Detected two consecutive scans in different locations in under <b>{Math.ceil((alert as IAdjacentScansAlert).deltaInMs / 1000 / 60)}</b> minutes.</span>
                                             :
                                                 <span></span>
                                         }</td>
