@@ -7,11 +7,9 @@ import {observer} from "mobx-react";
 import { useHistory } from "react-router-dom";
 import {observable} from "mobx";
 
-function Link({onClick, children}) {
+function Link({onClick, className}) {
     const history = useHistory();
-    return <div onClick={() => onClick(history)}>
-        {children}
-    </div>;
+    return <div onClick={() => onClick(history)} style={{width: '100%', boxSizing: 'border-box', margin: 30}} className={className}/>;
 }
 
 @observer
@@ -32,9 +30,8 @@ export class SideMenu extends React.Component<{},{}> {
                 _.sortBy(routes, r => r.displayIndex).map(
                     route => <Link
                         onClick={(history) => this.navigateTo(route, history)}
-                    >
-                        <div className={className(route)} style={{margin: 30}}/>
-                    </Link>
+                        className={className(route)}
+                    />
                 )
             }
         </div>

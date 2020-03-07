@@ -51,6 +51,7 @@ html, body, #root {
 
 .side-menu .menu-item-overview.selected{
   background-image: url(/menu-overview-selected.svg);
+  border-right: 3px solid #3e4d73;
 }
 
 .side-menu .menu-item-overview:hover{
@@ -63,6 +64,7 @@ html, body, #root {
 
 .side-menu .menu-item-item-status.selected{
   background-image: url(/menu-item-status-selected.svg);
+  border-right: 3px solid #3e4d73;
 }
 
 .side-menu .menu-item-item-status:hover{
