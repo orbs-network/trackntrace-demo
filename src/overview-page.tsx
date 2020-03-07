@@ -1,10 +1,11 @@
 import React from "react";
-import {BrowserRouter, Link} from "react-router-dom";
+import * as _ from 'lodash';
 import {inject, observer} from "mobx-react";
-import {Statistics} from "./statistics";
+import {IAlert, IRepeatedScanAlert, ITooManyScansAlert, Statistics, TooManyScansAlertThreshold} from "./statistics";
 import {BarChart} from "./bar-chart";
-import {toJS} from "mobx";
+import {observable, toJS} from "mobx";
 import {partnerBrandImage, stageImage} from "./resources";
+import {TablePagination} from "@material-ui/core";
 
 class Databox extends React.Component<{
     title: string,
@@ -33,11 +34,17 @@ class Databox extends React.Component<{
 export class OverviewPage extends React.Component<{
     statistics: Statistics
 }, {}> {
+    @observable private rowsPerPage: number = 5;
+    @observable private page: number = 0;
     render() {
         const byPartner = this.props.statistics.itemCountByPartner;
         const partners = Object.keys(toJS(byPartner)).sort();
         const byStage = this.props.statistics.itemCountByStage;
         const stages = Object.keys(toJS(byStage)).sort();
+        const repeatedScanAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Repeated Scan').length;
+        const tooManyAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Too Many Scans').length;
+        const alertCount = this.props.statistics.alerts.length;
+
         return <div style={{
             height: '100%',
             display: 'flex',
@@ -96,25 +103,51 @@ export class OverviewPage extends React.Component<{
                     }}>
                         <img src={"/alert.svg"} alt={"alert"} style={{padding: "0 10px"}}/> <span>Alerts</span>
                     </div>
-                    <div className={"alerts"}>
-                        <ul>
-                            <li>This is the first alert</li>
-                            <li>This is the second alert</li>
-                            <li>This is the third alert</li>
-                        </ul>
-                        <table className={"alerts-table"}>
-                            <tr>
-                                <td>TIMESTAMP</td>
-                                <td>ITEM ID</td>
-                                <td>DESCRIPTION</td>
-                            </tr>
-                            {this.props.statistics.alerts.map(alert => <tr>
-                                <td style={{whiteSpace: "nowrap"}}>{alert.timestamp.toDateString()}</td>
-                                <td style={{whiteSpace: "nowrap"}}>{alert.itemId}</td>
-                                <td style={{width: "100%"}}>{alert.description}</td>
-                            </tr>)}
-                        </table>
-                    </div>
+                    {
+                        alertCount > 0 ?
+                        <div className={"alerts"}>
+                            <ul>
+                                {repeatedScanAlertsCount > 0 && <li><b>{repeatedScanAlertsCount}</b> item{repeatedScanAlertsCount > 1 ? 's were' : ' was'} rescanned in a previous location (<i>Repeated-Scan-Alert</i>).</li>}
+                                {tooManyAlertsCount > 0 && <li><b>{tooManyAlertsCount}</b> item{tooManyAlertsCount > 1 ? 's were' : ' was'} scanned more than {TooManyScansAlertThreshold} times (<i>Too-Many-Scans-Alert</i>).</li>}
+                            </ul>
+                            <table className={"alerts-table"}>
+                                <tr>
+                                    <td>TIMESTAMP</td>
+                                    <td>ALERT TYPE</td>
+                                    <td>ITEM ID</td>
+                                    <td>DESCRIPTION</td>
+                                </tr>
+                                {_.sortBy(this.props.statistics.alerts, alert => -alert.timestamp.getTime())
+                                    .slice(this.page * this.rowsPerPage, (this.page+1) * this.rowsPerPage)
+                                    .map((alert: IAlert) => <tr>
+                                        <td style={{whiteSpace: "nowrap"}}>{alert.timestamp.toDateString()}</td>
+                                        <td style={{whiteSpace: "nowrap"}}>{alert.alertType}</td>
+                                        <td style={{whiteSpace: "nowrap"}}>{alert.itemId}</td>
+                                        <td style={{width: "100%"}}>{
+                                            alert.alertType == 'Repeated Scan' ?
+                                                <span> Item was scanned twice at location <i>{(alert as IRepeatedScanAlert).location}</i> (previous scan was at {(alert as IRepeatedScanAlert).prevTime.toDateString()})</span>
+                                            : alert.alertType == 'Too Many Scans' ?
+                                                <span> Item was scanned <b>{(alert as ITooManyScansAlert).count}</b> times</span>
+                                            :
+                                                <span></span>
+                                        }</td>
+                                    </tr>)}
+                            </table>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10]}
+                                component="div"
+                                count={this.props.statistics.alerts.length}
+                                rowsPerPage={this.rowsPerPage}
+                                page={this.page}
+                                onChangePage={(e, page) => this.page = page}
+                                onChangeRowsPerPage={(e) => {
+                                    this.rowsPerPage = parseInt(e.target.value)
+                                }}
+                            />
+                        </div>
+                        : <div style={{color: '#bebebe', margin: 10}}>- None -</div>
+                    }
+
                 </div>
             </div>
             <div style={{

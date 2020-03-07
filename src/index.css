@@ -160,10 +160,14 @@ html, body, #root {
 }
 
 .item-history-table {
+  margin: 30px 0;
+  display: inline-block;
+}
+
+.item-history-table>table {
   border: 1px solid #ebedf8;
   border-collapse: collapse;
   border-radius: 4px;
-  margin: 30px 0;
 }
 
 .item-history-table tr:first-child td {
@@ -171,16 +175,16 @@ html, body, #root {
   letter-spacing: 0.13px;
   color: #1a173b;
   font-weight: normal;
+  text-align: center;
 }
 
 .item-history-table td {
   border: 1px solid #ebedf8;
-  padding: 30px 15px;
+  padding: 20px 10px;
   font-size: 17px;
   letter-spacing: 1.47px;
   color: #484848;
   font-weight: bold;
-  text-align: center;
   white-space: nowrap;
 }
 
@@ -188,6 +192,10 @@ html, body, #root {
   font-size: 15px;
   color: #484848;
   font-weight: normal;
+}
+
+.item-history-table td.status-cell  {
+  text-align: center;
 }
 
 .item-history-table td.status-cell div {
@@ -200,9 +208,9 @@ html, body, #root {
 }
 
 .alerts-table {
+  display: block;
   border-collapse: collapse;
   margin: 0 20px 0 20px;
-  width: 80%;
   box-sizing: border-box;
 }
 
@@ -217,4 +225,37 @@ html, body, #root {
   color: #6b6c6d;
   font-size: 10px;
   letter-spacing: 1.49px;
+}
+
+.loading-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-page .logo-container {
+  width: 60%;
+  height: 60%;
+  position: relative;
+  bottom: 50px;
+}
+
+.loading-page .orbs-logo {
+  height: 100%;
+  position: relative;
+  -webkit-animation:spin 8s linear infinite;
+  -moz-animation:spin 8s linear infinite;
+  animation:spin 8s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.loading-page .loading-lbl {
+  font-size: 50px;
+  position: relative;
+  top: 30px;
+  left: calc(50% - 100px);
 }

@@ -3,11 +3,23 @@ import * as _ from "lodash";
 import {computed} from "mobx";
 import {ScanRecord} from "./record";
 
+export type AlertType = 'Repeated Scan' | 'Too Many Scans';
 export interface IAlert {
     timestamp: Date,
+    alertType: AlertType,
     itemId: string,
-    description: string
+    // description: string
 }
+
+export interface IRepeatedScanAlert extends IAlert {
+    location: string,
+    prevTime: Date
+}
+
+export interface ITooManyScansAlert extends IAlert {
+    count: number
+}
+export const TooManyScansAlertThreshold = 10;
 
 export class Statistics {
 
@@ -75,10 +87,44 @@ export class Statistics {
     }
 
     @computed get alerts(): IAlert[] {
-        return [{
-          timestamp: new Date(),
-          description: 'TODO description',
-          itemId: 'TODO item id'
-        }]
+        return (this.repeatedScanAlerts as IAlert[])
+            .concat(this.tooManyScansAlerts as IAlert[]);
+    }
+
+    @computed get repeatedScanAlerts(): IRepeatedScanAlert[] {
+        const alerts: IRepeatedScanAlert[] = [];
+        for (const uid of this.itemUIDs) {
+            const seenAt = {};
+            const records = this.itemRecords(uid);
+            for (let i = 0; i < records.length; i++) {
+                const rec = records[i];
+                const loc = rec.location();
+                if (seenAt[loc] != null && seenAt[loc] < i - 1) {
+                    const prev = records[seenAt[loc]];
+                    alerts.push({
+                        timestamp: rec.timestampAsDate(),
+                        alertType: 'Repeated Scan',
+                        itemId: rec.itemId(),
+                        location: rec.location(),
+                        prevTime: prev.timestampAsDate()
+                    });
+                    break;
+                }
+                seenAt[rec.location()] = i;
+            }
+        }
+        return alerts;
+    }
+
+    @computed get tooManyScansAlerts(): ITooManyScansAlert[] {
+        return this.itemUIDs
+            .map(uid => this.itemRecords(uid))
+            .filter(records => records.length > TooManyScansAlertThreshold)
+            .map(records => ({
+                timestamp: records[TooManyScansAlertThreshold].timestampAsDate(),
+                alertType: 'Too Many Scans',
+                itemId: records[0].itemId(),
+                count: records.length
+            }));
     }
 }

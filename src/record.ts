@@ -44,4 +44,7 @@ export class ScanRecord {
         return hashCode(JSON.stringify(this.raw)).toString();
     }
 
+    location(): string {
+        return this.raw.BusinessLocationID;
+    }
 }

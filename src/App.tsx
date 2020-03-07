@@ -7,11 +7,16 @@ import {routes} from "./routes";
 import {SideMenu} from "./side-menu";
 import {ItemStatusPage} from "./item-status-page";
 import {OverviewPage} from "./overview-page";
+import {LoadingPage} from "./loading-page";
 
 
-export class App extends React.Component<{},{}> {
+@inject('records')
+@observer
+export class App extends React.Component<{
+  records?: RecordStore
+},{}> {
   render() {
-    return <BrowserRouter>
+    return !this.props.records.ready ? <LoadingPage/> : <BrowserRouter>
       <div style={{height: '100%', width: '100%', position: 'relative'}}>
         <div style={{position: 'absolute', top: 0, left: 0, bottom: 0, width: 89}}>
           <SideMenu/>

@@ -34,5 +34,5 @@ export function generateRecords(nProducts: number, nRecordsPerProduct: number): 
     return records;
 }
 
-const records = generateRecords(Math.ceil(1000+Math.random()*1000), 4);
+const records = generateRecords(Math.ceil(1000+Math.random()*1000), 7);
 fs.writeFileSync('./public/generated_records.json', JSON.stringify(records, null, 2));
