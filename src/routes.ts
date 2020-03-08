@@ -33,7 +33,7 @@ export const routes: IRoute[] = [
 
 
 export function getCurrentRoute(): IRoute {
-  return routes.find(r => r.path == window.location.pathname) || routes[routes.length - 1];
+  return routes.find(r => r.path == window.location.hash.slice(1)) || routes[routes.length - 1];
 }
 
 export function getRoute(name: RouteName): IRoute {

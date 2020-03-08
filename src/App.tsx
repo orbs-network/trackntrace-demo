@@ -17,7 +17,7 @@ export class App extends React.Component<{
   records?: RecordStore
 },{}> {
   render() {
-    return this.props.records.ready ? <BrowserRouter>
+    return this.props.records.ready ? <HashRouter>
       <div style={{height: '100%', width: '100%', maxWidth: 2000, display: "inline-block", position: 'relative', textAlign: 'left'}}>
         <div style={{position: 'absolute', top: 0, left: 0, bottom: 0, width: 89}}>
           <SideMenu/>
@@ -35,7 +35,7 @@ export class App extends React.Component<{
             </Switch>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
             : this.props.records.err ? <ErrorPage err={this.props.records.err}/>
             : <LoadingPage/>
   }
