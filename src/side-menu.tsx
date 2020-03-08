@@ -23,6 +23,33 @@ export class SideMenu extends React.Component<{},{}> {
         };
 
         return <div className="side-menu" style={{height: '100%', width: '100%'}}>
+            <style dangerouslySetInnerHTML={{__html:`
+                .side-menu .menu-item-overview {
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-overview.svg);
+                }
+
+                .side-menu .menu-item-overview.selected{
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-overview-selected.svg);
+                    border-right: 3px solid #3e4d73;
+                }
+
+                .side-menu .menu-item-overview:hover{
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-overview-hovered.svg);
+                }
+
+                .side-menu .menu-item-item-status {
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-status.svg);
+                }
+
+                .side-menu .menu-item-item-status.selected{
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-status-selected.svg);
+                    border-right: 3px solid #3e4d73;
+                }
+
+                .side-menu .menu-item-item-status:hover{
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-status-hovered.svg);
+                }
+            `}}/>
             <div className='side-menu-orbs' style={{padding: 30, marginBottom: 20}}>
                 <img style={{height: 32, width:32}} src='/orbs-logo.svg'/>
             </div>

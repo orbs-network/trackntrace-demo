@@ -23,9 +23,9 @@ class Databox extends React.Component<{
 
     @observable initDisplayedData: number = 0;
     @observable finalDisplayedData: number = null;
+    @observable initial = true;
 
     mounted = false;
-    initial = true;
 
     componentDidMount() {
         this.mounted = true;
@@ -144,7 +144,7 @@ export class OverviewPage extends React.Component<{
                         flexDirection: 'row',
                         alignItems: 'center'
                     }}>
-                        <img src={"/alert.svg"} alt={"alert"} style={{padding: "0 10px"}}/> <span>Alerts</span>
+                        <img src={process.env.REACT_APP_BASE_URL + "/alert.svg"} alt={"alert"} style={{padding: "0 10px"}}/> <span>Alerts</span>
                     </div>
                     {
                         alertCount > 0 ?
@@ -241,7 +241,7 @@ export class OverviewPage extends React.Component<{
                 }}>
                     Items Location
                 </div>
-                <img src="/worldmap.svg" style={{width: '100%'}} alt="Route tracking"/>
+                <img src={process.env.REACT_APP_BASE_URL + "/worldmap.svg"} style={{width: '100%'}} alt="Route tracking"/>
             </div>
         </div>
     }

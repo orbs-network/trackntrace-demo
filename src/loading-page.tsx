@@ -15,7 +15,7 @@ export class LoadingPage extends React.Component<{}, {}> {
                     height: '100%',
                     width: '100%',
                     textAlign: 'center'
-                }}><img className={"orbs-logo"} src={"/orbs-logo.svg"}/></div>
+                }}><img className={"orbs-logo"} src={process.env.REACT_APP_BASE_URL + "/orbs-logo.svg"}/></div>
                 <div className={"loading-lbl"}>{this.loadingCaption}</div>
             </div>
         </div>
