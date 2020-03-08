@@ -179,7 +179,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                 <td>Operator</td>
                             </tr>
                             {
-                                _.sortBy(records.slice(this.pageSize * this.currentPage, this.pageSize * (this.currentPage + 1)), r => -r.timestampInSeconds())
+                                _.sortBy(records, r => -r.timestampInSeconds()).slice(this.pageSize * this.currentPage, this.pageSize * (this.currentPage + 1))
                                     .map(r => <tr>
                                         <td className={'record-id-cell'}>Record {r.recordId()}</td>
                                         <td style={{textAlign: 'left'}}>
