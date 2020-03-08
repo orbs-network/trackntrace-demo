@@ -1,5 +1,5 @@
 export function partnerBrandImage(brand: string): string {
-    return {
+    return process.env.REACT_APP_BASE_URL + {
         'amazon': '/amazon.png',
         'p&g': '/png.png',
         'fedex': '/fedex.png',
@@ -8,11 +8,11 @@ export function partnerBrandImage(brand: string): string {
 }
 
 export function stageImage(stage: string): string {
-    return {
+    return process.env.REACT_APP_BASE_URL + {
         'factory': '/factory.svg',
-        'mixingcenter': '/mixingcenter.svg',
-        'distributioncenter': '/distributioncenter.svg',
-        'retailstorage': '/retailstorage.svg'
+        'mixing': '/mixingcenter.svg',
+        'distribution': '/distributioncenter.svg',
+        'retail': '/retailstorage.svg'
     }[stage.toLowerCase().replace(/\s/g, "")] || '/unknown_stage.svg';
 }
 

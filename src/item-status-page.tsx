@@ -3,9 +3,16 @@ import * as _ from "lodash";
 import {inject, observer} from "mobx-react";
 import {Statistics} from "./statistics";
 import {observable, reaction} from "mobx";
-import {CircularProgress, TablePagination, TextField} from "@material-ui/core";
+import {Button, CircularProgress, DialogTitle, TablePagination, TextField} from "@material-ui/core";
 import {Autocomplete, createFilterOptions} from "@material-ui/lab";
 import {partnerBrandImage, stageImage} from "./resources";
+import {ScanRecord, stagesDisplay} from "./record";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import IconButton from "@material-ui/core/IconButton";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 
 const twodigits = (n:number) => (n < 10 ? '0' : '') + n.toString();
 
@@ -169,6 +176,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                 <td>Time</td>
                                 <td>Status</td>
                                 <td>Comments</td>
+                                <td>Operator</td>
                             </tr>
                             {
                                 _.sortBy(records.slice(this.pageSize * this.currentPage, this.pageSize * (this.currentPage + 1)), r => -r.timestampInSeconds())
@@ -194,12 +202,25 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                                 width: 20,
                                                 height: 20,
                                             }}/>&nbsp;&nbsp;&nbsp;
-                                            {r.stage()}
+                                            {stagesDisplay[r.stage()]}
                                         </td>
                                         <td>{`${twodigits(r.timestampAsDate().getDate())} ${r.timestampAsDate().toLocaleString('default', { month: 'short' })}, ${r.timestampAsDate().getFullYear()}`}</td>
                                         <td>{`${twodigits(r.timestampAsDate().getHours())}:${twodigits(r.timestampAsDate().getMinutes())}`}</td>
                                         <td className={'status-cell'}><div>OK</div></td>
                                         <td style={{color: "grey", fontWeight: "normal", textAlign: 'center'}}>N/A</td>
+                                        <td style={{textAlign: 'center'}}>
+                                            {
+                                                r.isOperatorAvailable() ?
+                                                    <IconButton onClick={() => this.openOperatorRetreivalDialog(r)} style={{padding: 0}}>
+                                                        <AccountCircleIcon/>
+                                                    </IconButton>
+                                                    :
+                                                    <AccountCircleOutlinedIcon/>
+                                                    // <img src={process.env.REACT_APP_BASE_URL + '/operator_available.svg'} alt={'Operator details available'} onClick={() => this.openOperatorRetreivalDialog(r)}/>
+                                                    // :
+                                                    // <img src={process.env.REACT_APP_BASE_URL + '/operator_not_available.svg'} alt={'Operator details not available'}/>
+                                            }
+                                        </td>
                                     </tr>)
                             }
                         </table>
@@ -214,9 +235,54 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                 this.pageSize = parseInt(e.target.value)
                             }}
                         />
+                        {this.isOperatorDialogOpen() && <Dialog onClose={() => this.closeOperatorDialog()} aria-labelledby="Scan Operator Details" open={this.isOperatorDialogOpen()}>
+                            <div style={{fontSize: 20, fontWeight: 'bold', margin: 20}}>Scan Operator Details</div>
+                            <DialogContent style={{textAlign: 'left'}}>
+                                You are attempting to retrieve operator details of scan { this.scanRecordForOperatorRetreival.recordId() }. Are you sure?<br/><br/>
+                                <b>Note - this action will be logged!</b><br/><br/>
+                                <div style={{textAlign: 'center'}}>
+                                    {
+                                        this.retrievingDetails ? <CircularProgress/>
+                                        : !this.operatorDetails ? <Button variant="contained" color="secondary" onClick={() => this.retreiveOperatorDetails()}>RETRIEVE OEPRATOR DETAILS</Button>
+                                            : <span>Full name: <b>{this.operatorDetails}</b></span>
+                                    }
+                                </div>
+                                <DialogActions>
+                                    <Button autoFocus onClick={() => this.closeOperatorDialog()} color="primary" style={{marginTop: 20}}>
+                                        {this.operatorDetails ? 'DONE' : 'CANCEL'}
+                                    </Button>
+                                </DialogActions>
+                            </DialogContent>
+                        </Dialog>}
                     </div>
                 </div>
             </div>}
         </div>
+    }
+
+    @observable retrievingDetails = false;
+    @observable operatorDetails = null;
+
+    private retreiveOperatorDetails() {
+        this.retrievingDetails = true;
+        setTimeout(() => {
+            this.retrievingDetails = false;
+            this.operatorDetails = this.scanRecordForOperatorRetreival.operatorFullName();
+        }, 3000)
+    }
+
+    @observable scanRecordForOperatorRetreival: ScanRecord;
+
+    private openOperatorRetreivalDialog(r: ScanRecord) {
+        this.scanRecordForOperatorRetreival = r;
+    }
+
+    private closeOperatorDialog() {
+        this.scanRecordForOperatorRetreival = null;
+        this.operatorDetails = null;
+    }
+
+    private isOperatorDialogOpen(): boolean {
+        return this.scanRecordForOperatorRetreival != null;
     }
 }

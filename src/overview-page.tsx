@@ -13,12 +13,14 @@ import {BarChart} from "./bar-chart";
 import {observable, toJS} from "mobx";
 import {partnerBrandImage, stageImage} from "./resources";
 import {TablePagination} from "@material-ui/core";
+import {stages, stagesDisplay} from "./record";
 
 @observer
 class Databox extends React.Component<{
     title: string,
     data: number
     subText?: string
+    decimals?: number
 }, {}> {
 
     @observable initDisplayedData: number = 0;
@@ -26,6 +28,14 @@ class Databox extends React.Component<{
     @observable initial = true;
 
     mounted = false;
+
+    format(v: number): string {
+        if (this.props.decimals) {
+            return `${Math.floor(v)}.${Math.floor(v * 10) % 10}`;
+        } else {
+            return `${v}`
+        }
+    }
 
     componentDidMount() {
         this.mounted = true;
@@ -59,7 +69,7 @@ class Databox extends React.Component<{
         return <div className={'databox'}>
             <div className={'databox-title'}>{this.props.title}</div>
             <div className={'databox-infotext'}>
-                <span>{this.initial ? this.initDisplayedData : this.finalDisplayedData}</span>
+                <span>{this.format(this.initial ? this.initDisplayedData : this.finalDisplayedData)}</span>
                 {this.props.subText &&
                     <div className={'databox-subtext'}>
                         <span>{this.props.subText}</span>
@@ -80,9 +90,9 @@ export class OverviewPage extends React.Component<{
     @observable private page: number = 0;
     render() {
         const byPartner = this.props.statistics.itemCountByPartner;
-        const partners = Object.keys(toJS(byPartner)).sort();
+        const partners = _.reverse(Object.keys(toJS(byPartner)).sort());
         const byStage = this.props.statistics.itemCountByStage;
-        const stages = Object.keys(toJS(byStage)).sort();
+        // const stages = Object.keys(toJS(byStage)).sort();
         const repeatedScanAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Repeated Scan').length;
         const tooManyAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Too Many Scans').length;
         const adjacentScansAlertsCount = this.props.statistics.alerts.filter(a => a.alertType == 'Adjacent Scans').length;
@@ -113,7 +123,7 @@ export class OverviewPage extends React.Component<{
                             <BarChart
                                 colors={["#035093", "#035093", "#4889c2", "#0a4171"]}
                                 images={stages.map(stage => stageImage(stage))}
-                                labels={stages}
+                                labels={stages.map(stage => stagesDisplay[stage])}
                                 values={stages.map(stage => byStage[stage])}
                             />
                         </div>
@@ -222,12 +232,12 @@ export class OverviewPage extends React.Component<{
             <div style={{margin:"30px 30px 0 30px"}}>
                 <table className={'data-table'}>
                     <tr>
-                        <td className={'border-right border-bottom'}><Databox title={"Alerted Products"} data={statistics.itemUIDs.length}/></td>
-                        <td className={'border-left border-bottom'}><Databox title={"Avg. Time in pipeline"} data={Math.floor(statistics.avgPiplineTimePerItemInDays)} subText={"DAYS"}/></td>
+                        <td className={'border-right border-bottom'}><Databox title={"Alerted Products"} data={statistics.alertedItems.length}/></td>
+                        <td className={'border-left border-bottom'}><Databox title={"Avg. Time in pipeline"} data={statistics.avgPiplineTimePerItemInDays} subText={"DAYS"} decimals={1}/></td>
                     </tr>
                     <tr>
                         <td className={'border-right border-top'}><Databox title={"Suspected counterfeit"} data={0}/></td>
-                        <td className={'border-left border-top'}><Databox title={"Avg. scans per item"} data={Math.floor(statistics.avgRecordsPerItem)}/></td>
+                        <td className={'border-left border-top'}><Databox title={"Avg. scans per item"} data={statistics.avgRecordsPerItem} decimals={1}/></td>
                     </tr>
                 </table>
                 <div style={{

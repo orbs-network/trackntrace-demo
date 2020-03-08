@@ -101,6 +101,10 @@ export class Statistics {
             .concat(this.adjacentScansAlert);
     }
 
+    @computed get alertedItems(): string[] {
+        return _.uniq(this.alerts.map(a => a.itemId));
+    }
+
     @computed get repeatedScanAlerts(): IRepeatedScanAlert[] {
         const alerts: IRepeatedScanAlert[] = [];
         for (const uid of this.itemUIDs) {

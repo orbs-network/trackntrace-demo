@@ -51,7 +51,7 @@ export class SideMenu extends React.Component<{},{}> {
                 }
             `}}/>
             <div className='side-menu-orbs' style={{padding: 30, marginBottom: 20}}>
-                <img style={{height: 32, width:32}} src='/orbs-logo.svg'/>
+                <img style={{height: 32, width:32}} src={process.env.REACT_APP_BASE_URL + '/orbs-logo.svg'}/>
             </div>
             {
                 _.sortBy(routes, r => r.displayIndex).map(

@@ -5,7 +5,7 @@ import {IRawScanRecord, stages} from "./record";
 const hashCode = s => Math.abs(s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0));
 const partners = ['Amazon','Amazon',
     'P&G','P&G','P&G',
-    'Fedex',
+    'FedEx',
     'DHL'];
 
 const _stages = _.shuffle(stages);

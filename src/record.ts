@@ -1,5 +1,11 @@
-export type Stage = 'Factory' | 'Mixing Center' | 'Distribution Center' | 'Retail Storage';
-export const stages: Stage[] = ['Factory', 'Mixing Center', 'Distribution Center', 'Retail Storage'];
+export type Stage = 'Factory' | 'Mixing' | 'Distribution' | 'Retail';
+export const stages: Stage[] = ['Factory', 'Mixing', 'Distribution', 'Retail'];
+export const stagesDisplay: {[stage in Stage]: string} = {
+    Factory: 'Factory',
+    Mixing: 'Mixing Center',
+    Distribution: 'Distribution Center',
+    Retail: 'Retail'
+}
 
 export interface IRawScanRecord {
     ProductID: string,
@@ -46,5 +52,13 @@ export class ScanRecord {
 
     location(): string {
         return this.raw.BusinessLocationID;
+    }
+
+    isOperatorAvailable(): boolean {
+        return this.partner().toLowerCase() == 'p&g';
+    }
+
+    operatorFullName(): string {
+        return 'John Doe';
     }
 }
