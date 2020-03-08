@@ -15,7 +15,7 @@ export interface IRoute {
 export const routes: IRoute[] = [
   {
     name: 'itemStatus',
-    path: process.env.REACT_APP_BASE_URL + '/item_status',
+    path: '/item_status',
     menuImg: '/menu-item-status.svg',
     cssClass: 'item-status',
     displayIndex: 1,
@@ -23,7 +23,7 @@ export const routes: IRoute[] = [
   },
   { // must be last
     name: 'overview',
-    path: process.env.REACT_APP_BASE_URL + '/',
+    path: '/',
     menuImg: '/menu-overview.svg',
     cssClass: 'overview',
     displayIndex: 0,
