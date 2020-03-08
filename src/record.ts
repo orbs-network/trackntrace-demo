@@ -1,3 +1,5 @@
+import {names} from "./names";
+
 export type Stage = 'Factory' | 'Mixing' | 'Distribution' | 'Retail';
 export const stages: Stage[] = ['Factory', 'Mixing', 'Distribution', 'Retail'];
 export const stagesDisplay: {[stage in Stage]: string} = {
@@ -15,6 +17,8 @@ export interface IRawScanRecord {
     BusinessLocationID: string,
     EventTimeZoneOffsetMS: number
 }
+
+const hashCode = s => Math.abs(s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0));
 
 export class ScanRecord {
     constructor(public raw: IRawScanRecord) {}
@@ -46,7 +50,6 @@ export class ScanRecord {
 
     recordId(): string {
         // TODO - get from server
-        const hashCode = s => Math.abs(s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0));
         return hashCode(JSON.stringify(this.raw)).toString();
     }
 
@@ -59,6 +62,9 @@ export class ScanRecord {
     }
 
     operatorFullName(): string {
-        return 'John Doe';
+        const h = hashCode(this.recordId());
+        const firstName = names[h % names.length];
+        const lastName = names[(h+1) % names.length];
+        return `${firstName} ${lastName}`;
     }
 }
