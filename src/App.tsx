@@ -8,6 +8,7 @@ import {SideMenu} from "./side-menu";
 import {ItemStatusPage} from "./item-status-page";
 import {OverviewPage} from "./overview-page";
 import {LoadingPage} from "./loading-page";
+import {ErrorPage} from "./error-page";
 
 
 @inject('records')
@@ -16,13 +17,12 @@ export class App extends React.Component<{
   records?: RecordStore
 },{}> {
   render() {
-    return !this.props.records.ready ? <LoadingPage/> : <BrowserRouter>
-      <div style={{height: '100%', width: '100%', position: 'relative'}}>
+    return this.props.records.ready ? <BrowserRouter>
+      <div style={{height: '100%', width: '100%', maxWidth: 2000, display: "inline-block", position: 'relative', textAlign: 'left'}}>
         <div style={{position: 'absolute', top: 0, left: 0, bottom: 0, width: 89}}>
           <SideMenu/>
         </div>
-        <div style={{position: 'absolute', top: 0, left: 90, bottom: 0, right:0, overflow: 'auto'}}>
-
+        <div style={{position: 'absolute', top: 0, left: 90, bottom: 0, right:0, overflow: 'auto', borderRight: "1px solid #ebedf8"}}>
             <Switch>
               {
                 routes.map(route => {
@@ -36,5 +36,7 @@ export class App extends React.Component<{
         </div>
       </div>
     </BrowserRouter>
+            : this.props.records.err ? <ErrorPage err={this.props.records.err}/>
+            : <LoadingPage/>
   }
 }

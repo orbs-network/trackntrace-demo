@@ -9,29 +9,39 @@ export class RecordStore {
     @observable records: ScanRecord[] = [];
 
     constructor(pollingIntervalMs = 500) {
-        const f = async () => {
+        this.init(pollingIntervalMs)
+    }
+
+    private async init(pollingIntervalMs: number) {
+        try {
+            const now = Date.now();
             await this.fetch();
-            setTimeout(f, pollingIntervalMs)
-        };
-        setTimeout(() => f(), 1500);
+            const delay = Math.max(0, 800 - (Date.now() - now));
+            setTimeout(() => this.ready = true, delay);
+
+            const f = async () => {
+                try {
+                    await this.fetch();
+                    setTimeout(f, pollingIntervalMs)
+                } catch (e) {
+                    this.err = e;
+                }
+            };
+            f();
+        } catch (e) {
+            this.err = e;
+        }
     }
 
     public async fetch() {
-        try {
-            const res = await fetch(process.env.REACT_APP_RECORDS_URL || "https://orbs.pg.demo/records");
-            const records: IRawScanRecord[] = await res.json();
+        const res = await fetch(process.env.REACT_APP_RECORDS_URL || "https://png-collector.herokuapp.com/getAllEvents");
+        const records: IRawScanRecord[] = await res.json();
 
-            if (this.records == null || records.length != this.records.length) {
-                this.records = records
-                    .filter(r => (r as any).msg != "[object Object]")
-                    .filter(r => r.EventTimeUTC != null)
-                    .map(raw => new ScanRecord(raw));
-                if (!this.ready) {
-                    this.ready = true; // don't set anyway because we don't want mobx to react
-                }
-            }
-        } catch (e) {
-            this.err = e;
+        if (this.records == null || records.length != this.records.length) {
+            this.records = records
+                .filter(r => (r as any).msg != "[object Object]")
+                .filter(r => r.EventTimeUTC != null)
+                .map(raw => new ScanRecord(raw));
         }
     }
 }

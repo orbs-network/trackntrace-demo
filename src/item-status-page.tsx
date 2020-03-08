@@ -17,6 +17,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
     @observable private ready = false;
     @observable private pageSize: number = 5;
     @observable private currentPage: number = 0;
+    private currentTimeoutHandle;
 
     get selected(): string {
         return this.selectedItemUID != null ?
@@ -41,7 +42,19 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
         const uid = this.selected;
         if (uid) {
             this.ready = false;
-            setTimeout(() => this.ready = true, 800);
+            if (this.currentTimeoutHandle) {
+                clearTimeout(this.currentTimeoutHandle);
+            }
+            this.currentTimeoutHandle = setTimeout(() => {
+                this.ready = true;
+                this.currentTimeoutHandle = null;
+            }, 1000);
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.currentTimeoutHandle) {
+            clearTimeout(this.currentTimeoutHandle);
         }
     }
 
@@ -178,8 +191,8 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                         <td>
                                             <img src={stageImage(r.stage())} style={{
                                                 verticalAlign: 'middle',
-                                                width: 30,
-                                                height: 30,
+                                                width: 20,
+                                                height: 20,
                                             }}/>&nbsp;&nbsp;&nbsp;
                                             {r.stage()}
                                         </td>

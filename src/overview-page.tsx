@@ -14,17 +14,52 @@ import {observable, toJS} from "mobx";
 import {partnerBrandImage, stageImage} from "./resources";
 import {TablePagination} from "@material-ui/core";
 
+@observer
 class Databox extends React.Component<{
     title: string,
-    infoText: string|number
+    data: number
     subText?: string
 }, {}> {
+
+    @observable initDisplayedData: number = 0;
+    @observable finalDisplayedData: number = null;
+
+    mounted = false;
+    initial = true;
+
+    componentDidMount() {
+        this.mounted = true;
+        const duration = 1000;
+        const data = this.props.data || 0;
+        const mountedAt = Date.now();
+        const update = () => {
+            if (this.mounted) {
+                const delta = Date.now() - mountedAt;
+                if (delta < duration) {
+                    this.initDisplayedData = Math.floor(data * (delta / duration));
+                    requestAnimationFrame(update);
+                } else {
+                    this.finalDisplayedData = data;
+                    this.initial = false;
+                }
+            }
+        };
+        update();
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
+    }
+
+    componentDidUpdate() {
+        this.finalDisplayedData = this.props.data;
+    }
 
     render() {
         return <div className={'databox'}>
             <div className={'databox-title'}>{this.props.title}</div>
             <div className={'databox-infotext'}>
-                <span>{this.props.infoText}</span>
+                <span>{this.initial ? this.initDisplayedData : this.finalDisplayedData}</span>
                 {this.props.subText &&
                     <div className={'databox-subtext'}>
                         <span>{this.props.subText}</span>
@@ -115,9 +150,9 @@ export class OverviewPage extends React.Component<{
                         alertCount > 0 ?
                         <div className={"alerts"}>
                             <ul>
-                                {repeatedScanAlertsCount > 0 && <li><b>{repeatedScanAlertsCount}</b> item{repeatedScanAlertsCount > 1 ? 's were' : ' was'} rescanned in a previous location (<i>Repeated-Scan-Alert</i>).</li>}
-                                {tooManyAlertsCount > 0 && <li><b>{tooManyAlertsCount}</b> item{tooManyAlertsCount > 1 ? 's were' : ' was'} scanned more than {TooManyScansAlertThreshold} times (<i>Too-Many-Scans-Alert</i>).</li>}
-                                {adjacentScansAlertsCount > 0 && <li><b>{adjacentScansAlertsCount}</b> item{adjacentScansAlertsCount > 1 ? 's were' : ' was'} scanned in two or more different locations within a period of less than {AdjacentScansAlertThresholdMs / 1000 / 60} minutes (<i>Adjacent-Scans-Alert</i>).</li>}
+                                {repeatedScanAlertsCount > 0 && <li><b>{repeatedScanAlertsCount}</b> item{repeatedScanAlertsCount > 1 ? 's were' : ' was'} rescanned in a previous location (<i>Repeated-Scan-Alert</i>)</li>}
+                                {tooManyAlertsCount > 0 && <li><b>{tooManyAlertsCount}</b> item{tooManyAlertsCount > 1 ? 's were' : ' was'} scanned more than {TooManyScansAlertThreshold} times (<i>Too-Many-Scans-Alert</i>)</li>}
+                                {adjacentScansAlertsCount > 0 && <li><b>{adjacentScansAlertsCount}</b> item{adjacentScansAlertsCount > 1 ? 's were' : ' was'} scanned in two or more different locations within a period of less than {AdjacentScansAlertThresholdMs / 1000 / 60} minutes (<i>Adjacent-Scans-Alert</i>)</li>}
                             </ul>
                             <table className={"alerts-table"}>
                                 <tr>
@@ -162,8 +197,6 @@ export class OverviewPage extends React.Component<{
                 </div>
             </div>
             <div style={{
-                // width: 500,
-                // height: '100%',
                 letterSpacing: 1.13,
                 fontSize: 19,
             }}>
@@ -189,12 +222,12 @@ export class OverviewPage extends React.Component<{
             <div style={{margin:"30px 30px 0 30px"}}>
                 <table className={'data-table'}>
                     <tr>
-                        <td className={'border-right border-bottom'}><Databox title={"Alerted Products"} infoText={statistics.itemUIDs.length}/></td>
-                        <td className={'border-left border-bottom'}><Databox title={"Avg. Time in pipeline"} infoText={Math.floor(statistics.avgPiplineTimePerItemInDays)} subText={"DAYS"}/></td>
+                        <td className={'border-right border-bottom'}><Databox title={"Alerted Products"} data={statistics.itemUIDs.length}/></td>
+                        <td className={'border-left border-bottom'}><Databox title={"Avg. Time in pipeline"} data={Math.floor(statistics.avgPiplineTimePerItemInDays)} subText={"DAYS"}/></td>
                     </tr>
                     <tr>
-                        <td className={'border-right border-top'}><Databox title={"Suspected counterfiet"} infoText={0}/></td>
-                        <td className={'border-left border-top'}><Databox title={"Avg. scans per item"} infoText={Math.floor(statistics.avgRecordsPerItem)}/></td>
+                        <td className={'border-right border-top'}><Databox title={"Suspected counterfeit"} data={0}/></td>
+                        <td className={'border-left border-top'}><Databox title={"Avg. scans per item"} data={Math.floor(statistics.avgRecordsPerItem)}/></td>
                     </tr>
                 </table>
                 <div style={{
@@ -206,7 +239,7 @@ export class OverviewPage extends React.Component<{
                     color: '#060606',
                     margin: '70px 0 40px'
                 }}>
-                    Route Tracking
+                    Items Location
                 </div>
                 <img src="/worldmap.svg" style={{width: '100%'}} alt="Route tracking"/>
             </div>
