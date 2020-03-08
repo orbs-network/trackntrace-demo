@@ -238,12 +238,12 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                         {this.isOperatorDialogOpen() && <Dialog onClose={() => this.closeOperatorDialog()} aria-labelledby="Scan Operator Details" open={this.isOperatorDialogOpen()}>
                             <div style={{fontSize: 20, fontWeight: 'bold', margin: 20}}>Scan Operator Details</div>
                             <DialogContent style={{textAlign: 'left'}}>
-                                You are attempting to retrieve operator details of scan { this.scanRecordForOperatorRetreival.recordId() }. Are you sure?<br/><br/>
+                                You are attempting to retrieve operator details of scan { this.scanRecordForOperatorRetreival.recordId() }.<br/><br/>
                                 <b>Note - this action will be logged!</b><br/><br/>
                                 <div style={{textAlign: 'center'}}>
                                     {
                                         this.retrievingDetails ? <CircularProgress/>
-                                        : !this.operatorDetails ? <Button variant="contained" color="secondary" onClick={() => this.retreiveOperatorDetails()}>RETRIEVE OEPRATOR DETAILS</Button>
+                                        : !this.operatorDetails ? <Button variant="contained" color="primary" onClick={() => this.retreiveOperatorDetails()}>RETRIEVE OEPRATOR DETAILS</Button>
                                             : <span>Full name: <b>{this.operatorDetails}</b></span>
                                     }
                                 </div>
