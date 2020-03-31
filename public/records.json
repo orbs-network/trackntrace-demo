@@ -1,1 +1,110 @@
-[{"ProductID":"4865EE1-7B89A","EventTimeUTC":"Thu, 05 Mar 2020 15:28:02 GMT","BusinessParty":"P&G","EventTimeUTCMS":1583422082589,"BusinessLocationID":"Factory","EventTimeZoneOffsetMS":-7200000},{"EventTime":5,"ProductID":"4865EE1-7B89A","BusinessParty":"P&G","BusinessLocationID":"Factory","EventTimeZoneOffset":-120},{"ProductID":"4865EE1-7B89A","EventTimeUTC":"Thu, 05 Mar 2020 16:31:02 GMT","BusinessParty":"P&G","EventTimeUTCMS":1583425862031,"BusinessLocationID":"Factory","EventTimeZoneOffsetMS":-7200000},{"ProductID":"4865EE1-7B89A","EventTimeUTC":"Thu, 05 Mar 2020 16:37:26 GMT","BusinessParty":"P&G","EventTimeUTCMS":1583426246450,"BusinessLocationID":"Factory","EventTimeZoneOffsetMS":-7200000},{"msg":"[object Object]"},{"msg":"[object Object]"},{"ProductID":"4865EE1-7B89A","EventTimeUTC":"Thu, 05 Mar 2020 17:32:35 GMT","BusinessParty":"Salepoint","EventTimeUTCMS":1583429555511,"BusinessLocationID":"Mixing","EventTimeZoneOffsetMS":-7200000},{"EventTime":5,"ProductID":"02002200043977030320144618102827030","BusinessParty":"P&G","BusinessLocationID":"Factory","EventTimeZoneOffset":-120},{"EventTime":5,"ProductID":"02002200043977030320144618102827030","BusinessParty":"P&G","BusinessLocationID":"Factory","EventTimeZoneOffset":-120},{"EventTime":5,"ProductID":"02002200043977030320144618102827030","BusinessParty":"P&G","BusinessLocationID":"Factory","EventTimeZoneOffset":-120}]
+[
+  {
+    "tagId": "83.2410",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141D14",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2410",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "3c71bf63e190",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2410",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW984fab141D70",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2410",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141D38",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2410",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141DF4",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2410",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141D0C",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2411",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141D14",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2411",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "3c71bf63e190",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2411",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW984fab141D70",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2411",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141D38",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2411",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141DF4",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+  {
+    "tagId": "83.2411",
+    "latitude": "42.361145",
+    "longitude": "-71.057083",
+    "gatewayId": "GW98f4ab141D0C",
+    "eventType": "PRESENCE",
+    "eventValue": "1",
+    "timestamp": "1582818843"
+  },
+]

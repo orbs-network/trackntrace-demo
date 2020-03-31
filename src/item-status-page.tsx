@@ -5,7 +5,7 @@ import {Statistics} from "./statistics";
 import {observable, reaction} from "mobx";
 import {Button, CircularProgress, DialogTitle, TablePagination, TextField} from "@material-ui/core";
 import {Autocomplete, createFilterOptions} from "@material-ui/lab";
-import {partnerBrandImage, stageImage} from "./resources";
+import {gatewayImage, partnerBrandImage, stageImage} from "./resources";
 import {ScanRecord, stagesDisplay} from "./record";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -170,13 +170,12 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                         <table>
                             <tr>
                                 <td></td>
-                                <td>Partner</td>
-                                <td>Stage</td>
+                                <td>Gateway</td>
+                                <td>Gateway ID</td>
+                                <td>Event Type</td>
+                                <td>Event Value</td>
                                 <td>Date</td>
                                 <td>Time</td>
-                                <td>Status</td>
-                                <td>Comments</td>
-                                <td>Operator</td>
                             </tr>
                             {
                                 _.sortBy(records, r => -r.timestampInSeconds()).slice(this.pageSize * this.currentPage, this.pageSize * (this.currentPage + 1))
@@ -187,40 +186,20 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                                 verticalAlign: 'middle',
                                                 width: 30,
                                                 height: 30,
-                                                backgroundImage: `url(${partnerBrandImage(r.partner())})`,
+                                                backgroundImage: `url(${gatewayImage(r.gatewayAlias())})`,
                                                 backgroundSize: 'contain',
                                                 backgroundRepeat: 'no-repeat',
                                                 whiteSpace: 'nowrap',
                                                 backgroundPosition: 'center',
                                                 display: 'inline-block'
                                             }}/>
-                                            &nbsp;&nbsp;&nbsp;{r.partner()}
+                                            &nbsp;&nbsp;&nbsp;{r.gatewayAlias()}
                                         </td>
-                                        <td>
-                                            <img src={stageImage(r.stage())} style={{
-                                                verticalAlign: 'middle',
-                                                width: 20,
-                                                height: 20,
-                                            }}/>&nbsp;&nbsp;&nbsp;
-                                            {stagesDisplay[r.stage()]}
-                                        </td>
+                                        <td> {r.gatewayId()} </td>
+                                        <td> {r.eventType()} </td>
+                                        <td> {r.eventValue()} </td>
                                         <td>{`${twodigits(r.timestampAsDate().getDate())} ${r.timestampAsDate().toLocaleString('default', { month: 'short' })}, ${r.timestampAsDate().getFullYear()}`}</td>
                                         <td>{`${twodigits(r.timestampAsDate().getHours())}:${twodigits(r.timestampAsDate().getMinutes())}`}</td>
-                                        <td className={'status-cell'}><div>OK</div></td>
-                                        <td style={{color: "grey", fontWeight: "normal", textAlign: 'center'}}>N/A</td>
-                                        <td style={{textAlign: 'center'}}>
-                                            {
-                                                r.isOperatorAvailable() ?
-                                                    <IconButton onClick={() => this.openOperatorRetreivalDialog(r)} style={{padding: 0}}>
-                                                        <AccountCircleIcon/>
-                                                    </IconButton>
-                                                    :
-                                                    <AccountCircleOutlinedIcon/>
-                                                    // <img src={process.env.REACT_APP_BASE_URL + '/operator_available.svg'} alt={'Operator details available'} onClick={() => this.openOperatorRetreivalDialog(r)}/>
-                                                    // :
-                                                    // <img src={process.env.REACT_APP_BASE_URL + '/operator_not_available.svg'} alt={'Operator details not available'}/>
-                                            }
-                                        </td>
                                     </tr>)
                             }
                         </table>

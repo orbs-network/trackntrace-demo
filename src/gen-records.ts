@@ -8,55 +8,50 @@ const partners = ['Amazon','Amazon',
     'FedEx',
     'DHL'];
 
+const gatewayIds = [
+    "3c71bf63e190",
+    "3c71bf63e190",
+    "3c71bf63e190",
+    "3c71bf63e190",
+    "3c71bf63e190",
+    "3c71bf63e190",
+    "GW98f4ab141D14",
+    "GW98f4ab141D14",
+    "GW98f4ab141D14",
+    "GW98f4ab141D14",
+    "GW98f4ab141D14",
+    "GW984fab141D70",
+    "GW984fab141D70",
+    "GW984fab141D70",
+    "GW98f4ab141D38",
+    "GW98f4ab141D38",
+    "GW98f4ab141DF4",
+    "GW98f4ab141DF4",
+    "GW98f4ab141D0C",
+    "GW98f4ab141D0C",
+    "GW98f4ab141D0C",
+    "GW98f4ab141D0C",
+];
+
 export function generateRecords(nProducts: number): IRawScanRecord[] {
     let records: IRawScanRecord[] = [];
     _.range(nProducts).forEach(() => {
         const nRecs = _.sample([1,1,1,2,2,3,4,4]);
-        const timestamps = _.sortBy(_.range(nRecs+20).map(() => new Date(Math.floor(Date.now() - 365*24*60*60*1000 * Math.random())).getTime()));
+        const timestamps = _.sortBy(_.range(nRecs+20).map(() => new Date(Math.floor(Date.now() - 7*24*60*60*1000 * Math.random())).getTime()));
         const pid = hashCode(Math.random().toString()).toString();
         let pRecords = [];
         _.range(nRecs).forEach(i => {
             const timestamp = timestamps[i];
             pRecords.push({
-                ProductID: pid,
-                EventTimeUTC: new Date(timestamp).toString(),
-                BusinessParty: _.sample(partners),
-                EventTimeUTCMS: timestamp,
-                BusinessLocationID: stages[i],
-                EventTimeZoneOffsetMS: 0
-            })
+                tagId: pid,
+                timestamp: timestamp / 1000,
+                latitude: "123.456",
+                longitude: "123.456",
+                eventType: "PRESENCE",
+                gatewayId: _.sample(gatewayIds),
+                eventValue: "1"
+            } as IRawScanRecord)
         });
-        if (Math.random() < 0.1) {
-            const r = Math.random();
-            if (r < 0.33) {
-                // repeated
-                const timestamp = timestamps[pRecords.length];
-                const newRec = {
-                    ..._.sample(pRecords),
-                    EventTimeUTC: new Date(timestamp).toString(),
-                    EventTimeUTCMS: timestamp,
-                };
-                pRecords.push(newRec);
-            } else if (r < 0.66) {
-                // too many
-                _.range(10 + Math.ceil(Math.random() * 3)).forEach(() => {
-                    pRecords.push({
-                        ...pRecords[pRecords.length - 1]
-                    });
-                });
-            } else {
-                // adjacent
-                const timestamp = timestamps[pRecords.length - 1] + (5 + Math.floor(10*Math.random()))*60*1000;
-                const newRec = {
-                    ..._.sample(pRecords),
-                    EventTimeUTC: new Date(timestamp).toString(),
-                    EventTimeUTCMS: timestamp,
-                    BusinessLocationID: stages[pRecords.length % stages.length] + '_A'
-                };
-                pRecords.push(newRec);
-            }
-
-        }
         records = records.concat(pRecords);
     });
     return records;

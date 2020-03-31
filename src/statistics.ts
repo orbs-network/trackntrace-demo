@@ -81,74 +81,26 @@ export class Statistics {
         return _.sortBy(this.itemRecords(itemId), r => r.timestampInMilliseconds());
     }
 
-    @computed get itemCountByPartner(): {[partnerName: string]: number} {
+    @computed get itemCountByGateway(): {[partnerName: string]: number} {
         return _.chain(this.latestRecordsPerItem)
-            .groupBy(r => r.partner())
+            .groupBy(r => r.gatewayId())
             .mapValues(recs => recs.length)
             .value()
     }
 
-    @computed get itemCountByStage(): {[partnerName: string]: number} {
+    @computed get itemCountByGatewayAlias(): {[partnerName: string]: number} {
         return _.chain(this.latestRecordsPerItem)
-            .groupBy(r => r.stage())
+            .groupBy(r => r.gatewayAlias())
             .mapValues(recs => recs.length)
             .value()
     }
 
     @computed get alerts(): IAlert[] {
-        return (this.repeatedScanAlerts as IAlert[])
-            .concat(this.tooManyScansAlerts)
-            .concat(this.adjacentScansAlert);
+        return this.tooManyScansAlerts;
     }
 
     @computed get alertedItems(): string[] {
         return _.uniq(this.alerts.map(a => a.itemId));
-    }
-
-    @computed get repeatedScanAlerts(): IRepeatedScanAlert[] {
-        const alerts: IRepeatedScanAlert[] = [];
-        for (const uid of this.itemUIDs) {
-            const seenAt = {};
-            const records = this.itemRecordsSortedByTime(uid);
-            for (let i = 0; i < records.length; i++) {
-                const rec = records[i];
-                const loc = rec.location();
-                if (seenAt[loc] != null && seenAt[loc] < i - 1) {
-                    const prev = records[seenAt[loc]];
-                    alerts.push({
-                        timestamp: rec.timestampAsDate(),
-                        alertType: 'Repeated Scan',
-                        itemId: rec.itemId(),
-                        location: rec.location(),
-                        prevTime: prev.timestampAsDate()
-                    });
-                    break;
-                }
-                seenAt[rec.location()] = i;
-            }
-        }
-        return alerts;
-    }
-
-    @computed get adjacentScansAlert(): IAdjacentScansAlert[] {
-        const alerts: IAdjacentScansAlert[] = [];
-        for (const uid of this.itemUIDs) {
-            const records = this.itemRecordsSortedByTime(uid);
-            for (let i = 1; i < records.length; i++) {
-                const rec = records[i];
-                const delta = (records[i].timestampInMilliseconds() - records[i - 1].timestampInMilliseconds());
-                if (records[i].location() != records[i - 1].location() && delta < AdjacentScansAlertThresholdMs) {
-                    alerts.push({
-                        timestamp: rec.timestampAsDate(),
-                        alertType: 'Adjacent Scans',
-                        itemId: rec.itemId(),
-                        deltaInMs: delta
-                    });
-                    break;
-                }
-            }
-        }
-        return alerts;
     }
 
     @computed get tooManyScansAlerts(): ITooManyScansAlert[] {
