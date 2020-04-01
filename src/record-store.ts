@@ -40,7 +40,7 @@ export class RecordStore {
         if (this.records == null || records.length != this.records.length) {
             this.records = records
                 .filter(r => (r as any).msg != "[object Object]")
-                .filter(r => r.tagId != null)
+                .filter(r => Object.keys(r).map(k => k.toLowerCase()).find(x => x == "tagid"))
                 .map(raw => new ScanRecord(raw));
         }
     }
