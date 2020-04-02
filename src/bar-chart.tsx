@@ -51,7 +51,7 @@ class Bar extends React.Component<{
             </div>
             <div style={{
                 height: 124 * scale + 10,
-                width: 114 * scale,
+                width: 134 * scale,
                 backgroundColor: "#e9e9e9",
                 boxSizing: 'border-box',
                 display: 'flex',

@@ -68,13 +68,13 @@ export class ScanRecord {
 
     gatewayAlias(): string {
         return {
-            "3c71bf63e190": "Original",
-            "GW98f4ab141D14": "P&G Manufacturing",
-            "GW984fab141D70": "P&G Truck",
-            "GW98f4ab141D38": "Customer DC or P&G DC",
-            "GW98f4ab141DF4": "Customer DC or P&G DC Shelf",
-            "GW98f4ab141D0C": "P&G Customer Store",
-        }[this.rawLowecase.gatewayid] || this.rawLowecase.gatewayid;
+            ["3c71bf63e190".toLowerCase()]: "Original",
+            ["GW98f4ab141D14".toLowerCase()]: "P&G Manufacturing",
+            ["GW984fab141D70".toLowerCase()]: "P&G Truck",
+            ["GW98f4ab141D38".toLowerCase()]: "Customer DC or P&G DC",
+            ["GW98f4ab141DF4".toLowerCase()]: "Customer DC or P&G DC Shelf",
+            ["GW98f4ab141D0C".toLowerCase()]: "P&G Customer Store",
+        }[this.rawLowecase.gatewayid.toLowerCase()] || this.rawLowecase.gatewayid;
     }
 
     recordId(): string {
