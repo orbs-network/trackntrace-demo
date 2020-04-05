@@ -5,19 +5,19 @@ import {RecordStore} from "./record-store";
 import {BrowserRouter, Switch, Route, HashRouter} from 'react-router-dom';
 import {routes} from "./routes";
 import {SideMenu} from "./side-menu";
-import {ItemStatusPage} from "./item-status-page";
-import {OverviewPage} from "./overview-page";
 import {LoadingPage} from "./loading-page";
 import {ErrorPage} from "./error-page";
+import {GatewayConfig} from "./gateway-config";
 
 
-@inject('records')
+@inject('records', 'gatewayConfig')
 @observer
 export class App extends React.Component<{
   records?: RecordStore
+  gatewayConfig?: GatewayConfig
 },{}> {
   render() {
-    return this.props.records.ready ? <HashRouter>
+    return this.props.records.ready && this.props.gatewayConfig.ready ? <HashRouter>
       <div style={{height: '100%', width: '100%', maxWidth: 2000, display: "inline-block", position: 'relative', textAlign: 'left'}}>
         <div style={{position: 'absolute', top: 0, left: 0, bottom: 0, width: 89}}>
           <SideMenu/>
@@ -36,7 +36,7 @@ export class App extends React.Component<{
         </div>
       </div>
     </HashRouter>
-            : this.props.records.err ? <ErrorPage err={this.props.records.err}/>
+            : this.props.records.err || this.props.gatewayConfig.err ? <ErrorPage err={this.props.records.err || this.props.gatewayConfig.err}/>
             : <LoadingPage/>
   }
 }

@@ -14,6 +14,7 @@ import {observable, toJS} from "mobx";
 import {gatewayImage, partnerBrandImage, stageImage} from "./resources";
 import {TablePagination} from "@material-ui/core";
 import {stages, stagesDisplay} from "./record";
+import {GatewayConfig} from "./gateway-config";
 
 @observer
 class Databox extends React.Component<{
@@ -81,16 +82,17 @@ class Databox extends React.Component<{
 
 }
 
-@inject('statistics')
+@inject('statistics', 'gatewayConfig')
 @observer
 export class OverviewPage extends React.Component<{
-    statistics: Statistics
+    statistics: Statistics,
+    gatewayConfig: GatewayConfig
 }, {}> {
     @observable private rowsPerPage: number = 5;
     @observable private page: number = 0;
     render() {
-        const byGateway = this.props.statistics.itemCountByGatewayAlias;
-        const gateways = _.reverse(Object.keys(toJS(byGateway)).sort());
+        const byGateway = this.props.statistics.itemCountByGateway;
+        const gateways = _.reverse(Object.keys(toJS(byGateway)).sort())
         return <div style={{
             height: '100%',
             display: 'flex',
@@ -116,7 +118,7 @@ export class OverviewPage extends React.Component<{
                             <BarChart
                                 colors={["#035093", "#035093", "#4889c2", "#0a4171"]}
                                 images={gateways.map(gateway => gatewayImage(gateway))}
-                                labels={gateways}
+                                labels={gateways.map(gw => this.props.gatewayConfig.getFor(gw).Alias)}
                                 values={gateways.map(gateway => byGateway[gateway])}
                             />
                         </div>

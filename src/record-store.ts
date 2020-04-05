@@ -1,5 +1,6 @@
 import {observable} from "mobx";
 import {IRawScanRecord, ScanRecord} from "./record";
+import {GatewayConfig} from "./gateway-config";
 
 export class RecordStore {
 
@@ -8,7 +9,7 @@ export class RecordStore {
 
     @observable records: ScanRecord[] = [];
 
-    constructor(pollingIntervalMs = 500) {
+    constructor(private gatewayConfig: GatewayConfig, pollingIntervalMs = 1000) {
         this.init(pollingIntervalMs)
     }
 
@@ -41,7 +42,7 @@ export class RecordStore {
             this.records = records
                 .filter(r => (r as any).msg != "[object Object]")
                 .filter(r => Object.keys(r).map(k => k.toLowerCase()).find(x => x == "tagid"))
-                .map(raw => new ScanRecord(raw));
+                .map(raw => new ScanRecord(raw, this.gatewayConfig));
         }
     }
 }

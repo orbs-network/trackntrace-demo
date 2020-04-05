@@ -7,13 +7,13 @@ export function gatewayImage(gatewayId: string): string {
         ["GW98f4ab141D38".toLowerCase()]: '/distributioncenter.svg',
         ["GW98f4ab141DF4".toLowerCase()]: '/inventory.svg', //"Customer DC or P&G DC Shelf",
         ["GW98f4ab141D0C".toLowerCase()]: '/retailstorage.svg',
-        ["Original".toLowerCase()]:  '/mixingcenter.svg',
-        ["P&G Manufacturing".toLowerCase()]:  '/factory.svg',
-        ["P&G Truck".toLowerCase()]:  '/truck.svg', //"P&G Truck",
-        ["Customer DC or P&G DC".toLowerCase()]:  '/distributioncenter.svg',
-        ["Customer DC or P&G DC Shelf".toLowerCase()]:  '/inventory.svg', //"Customer DC or P&G DC Shelf",
-        ["P&G Customer Store".toLowerCase()]:  '/retailstorage.svg',
-    }[gatewayId.toLowerCase()] || '/unknown_gateway.svg';
+        // ["Original".toLowerCase()]:  '/mixingcenter.svg',
+        // ["P&G Manufacturing".toLowerCase()]:  '/factory.svg',
+        // ["P&G Truck".toLowerCase()]:  '/truck.svg', //"P&G Truck",
+        // ["Customer DC or P&G DC".toLowerCase()]:  '/distributioncenter.svg',
+        // ["Customer DC or P&G DC Shelf".toLowerCase()]:  '/inventory.svg', //"Customer DC or P&G DC Shelf",
+        // ["P&G Customer Store".toLowerCase()]:  '/retailstorage.svg',
+    }[gatewayId.toLowerCase()] || '/mixingcenter.svg';
 }
 
 export function partnerBrandImage(brand: string): string {

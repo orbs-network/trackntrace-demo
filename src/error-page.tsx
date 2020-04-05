@@ -9,7 +9,7 @@ export class ErrorPage extends React.Component<{err: Error}, {}> {
             <Alert severity="error">
                 <AlertTitle>Error</AlertTitle>
                 We were unable to load the page at the moment. Please try again. <br/>
-                <span style={{color: "#bebebe"}}><pre>Error: {this.props.err.toString()}</pre></span>
+                <span style={{color: "#bebebe"}}><pre>{this.props.err.toString()}</pre></span>
             </Alert>
         </div>
     }

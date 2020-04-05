@@ -1,4 +1,5 @@
 import {names} from "./names";
+import {GatewayConfig} from "./gateway-config";
 
 export type Stage = 'Factory' | 'Mixing' | 'Distribution' | 'Retail';
 export const stages: Stage[] = ['Factory', 'Mixing', 'Distribution', 'Retail'];
@@ -33,7 +34,7 @@ const hashCode = s => Math.abs(s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCod
 
 export class ScanRecord {
     private rawLowecase: IRawScanRecordLowecaseKeys;
-    constructor(public raw: IRawScanRecord) {
+    constructor(public raw: IRawScanRecord, private gatewayConfig: GatewayConfig) {
         this.rawLowecase = {} as IRawScanRecordLowecaseKeys;
         Object.keys(raw).forEach(k => this.rawLowecase[k.toLowerCase()] = raw[k]);
     }
@@ -67,15 +68,7 @@ export class ScanRecord {
     }
 
     gatewayAlias(): string {
-        return {
-            ["3c71bf63e190".toLowerCase()]: "Original",
-            ["GW98f4ab141D14".toLowerCase()]: "P&G Manufacturing",
-            ["GW98f4ab141D70".toLowerCase()]: "P&G Truck",
-            ["GW984fab141D70".toLowerCase()]: "P&G Truck",
-            ["GW98f4ab141D38".toLowerCase()]: "Customer DC or P&G DC",
-            ["GW98f4ab141DF4".toLowerCase()]: "Customer DC or P&G DC Shelf",
-            ["GW98f4ab141D0C".toLowerCase()]: "P&G Customer Store",
-        }[this.rawLowecase.gatewayid.toLowerCase()] || this.rawLowecase.gatewayid;
+        return this.gatewayConfig.getFor(this.rawLowecase.gatewayid).Alias || this.rawLowecase.gatewayid;
     }
 
     recordId(): string {
