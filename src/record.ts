@@ -70,6 +70,7 @@ export class ScanRecord {
         return {
             ["3c71bf63e190".toLowerCase()]: "Original",
             ["GW98f4ab141D14".toLowerCase()]: "P&G Manufacturing",
+            ["GW98f4ab141D70".toLowerCase()]: "P&G Truck",
             ["GW984fab141D70".toLowerCase()]: "P&G Truck",
             ["GW98f4ab141D38".toLowerCase()]: "Customer DC or P&G DC",
             ["GW98f4ab141DF4".toLowerCase()]: "Customer DC or P&G DC Shelf",

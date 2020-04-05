@@ -88,11 +88,21 @@ export class Statistics {
             .value()
     }
 
-    @computed get itemCountByGatewayAlias(): {[partnerName: string]: number} {
-        return _.chain(this.latestRecordsPerItem)
+    @computed get itemCountByGatewayAlias(): {[gatewayAlias: string]: number} {
+        const counts = _.chain(this.latestRecordsPerItem)
             .groupBy(r => r.gatewayAlias())
             .mapValues(recs => recs.length)
-            .value()
+            .value();
+        const gateways = ["Original",
+            "P&G Manufacturing",
+            "P&G Truck",
+            "Customer DC or P&G DC",
+            "Customer DC or P&G DC Shelf",
+            "P&G Customer Store"];
+        for (const g of gateways) {
+            counts[g] = counts[g] || 0;
+        }
+        return counts;
     }
 
     @computed get alerts(): IAlert[] {

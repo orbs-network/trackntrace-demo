@@ -91,7 +91,6 @@ export class OverviewPage extends React.Component<{
     render() {
         const byGateway = this.props.statistics.itemCountByGatewayAlias;
         const gateways = _.reverse(Object.keys(toJS(byGateway)).sort());
-
         return <div style={{
             height: '100%',
             display: 'flex',

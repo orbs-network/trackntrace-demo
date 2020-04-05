@@ -186,7 +186,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                                 verticalAlign: 'middle',
                                                 width: 30,
                                                 height: 30,
-                                                backgroundImage: `url(${gatewayImage(r.gatewayAlias())})`,
+                                                backgroundImage: `url(${gatewayImage(r.gatewayId())})`,
                                                 backgroundSize: 'contain',
                                                 backgroundRepeat: 'no-repeat',
                                                 whiteSpace: 'nowrap',
