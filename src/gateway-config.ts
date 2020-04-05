@@ -1,5 +1,8 @@
 import * as Papa from "papaparse";
+import * as _ from "lodash";
 import {observable} from "mobx";
+
+declare const AWS: any;
 
 export interface IGatewayConfigRecord {
     ID: string;
@@ -9,12 +12,15 @@ export interface IGatewayConfigRecord {
     BackgroomGatewayId?: string;
 }
 
-export async function loadGatewayConfigRecords(csvUrl: string): Promise<IGatewayConfigRecord[]> {
+export async function loadGatewayConfigRecords(csvS3Key: string): Promise<IGatewayConfigRecord[]> {
     const stripKey = (x): string => x.replace(/\s/g, "").toLowerCase();
     const strip = (x) : string => x == null ? null : x.trim() != "" ? x.trim() : null;
+
+    const r = await (new AWS.S3({accessKeyId: 'AKIA2SZDVCH3YP6KEYUN', secretAccessKey: '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', region:'us-west-2', endpoint:'s3-us-west-2.amazonaws.com'}).getObject({Bucket:'trackntrace-config', Key:csvS3Key})).promise()
+    const csvText = r.Body.toString();
+
     return new Promise<IGatewayConfigRecord[]>((resolve, reject) => {
-        Papa.parse(csvUrl, {
-            download: true,
+        Papa.parse(csvText, {
             header: true,
             error: (err) => reject(err),
             complete: (results) => {
@@ -62,7 +68,7 @@ export class GatewayConfig {
 
     private async init() {
         try {
-            this.records = await loadGatewayConfigRecords(process.env.REACT_APP_GATEWAY_CONFIG_URL || "https://trackntrace-config.s3-us-west-2.amazonaws.com/gw-conf.csv");
+            this.records = await loadGatewayConfigRecords(process.env.REACT_APP_CSV_S3_KEY || "gw-conf.csv");
             this.prevalidateConfig();
             for (const rec of this.records) {
                 this.configById[rec.ID.toLowerCase()] = rec;
@@ -89,6 +95,10 @@ export class GatewayConfig {
 
     getFor(gatewayId: string): IGatewayConfigRecord {
         return this.configById[gatewayId.toLowerCase()] || defaultConfig(gatewayId);
+    }
+
+    all(): IGatewayConfigRecord[] {
+        return _.cloneDeep(this.records);
     }
 
 }

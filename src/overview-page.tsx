@@ -92,7 +92,7 @@ export class OverviewPage extends React.Component<{
     @observable private page: number = 0;
     render() {
         const byGateway = this.props.statistics.itemCountByGateway;
-        const gateways = _.reverse(Object.keys(toJS(byGateway)).sort())
+        const gateways = this.props.gatewayConfig.all().map(cfg => cfg.ID);
         return <div style={{
             height: '100%',
             display: 'flex',
@@ -119,7 +119,7 @@ export class OverviewPage extends React.Component<{
                                 colors={["#035093", "#035093", "#4889c2", "#0a4171"]}
                                 images={gateways.map(gateway => gatewayImage(gateway))}
                                 labels={gateways.map(gw => this.props.gatewayConfig.getFor(gw).Alias)}
-                                values={gateways.map(gateway => byGateway[gateway])}
+                                values={gateways.map(gateway => byGateway[gateway] || 0)}
                             />
                         </div>
                     </div>
