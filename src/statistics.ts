@@ -2,14 +2,7 @@ import {RecordStore} from "./record-store";
 import * as _ from "lodash";
 import {computed} from "mobx";
 import {ScanRecord} from "./record";
-
-export type AlertType = 'Repeated Scan' | 'Too Many Scans' | 'Adjacent Scans';
-export interface IAlert {
-    timestamp: Date,
-    alertType: AlertType,
-    itemId: string,
-    // description: string
-}
+import {IAlert} from "./alerts";
 
 export interface IRepeatedScanAlert extends IAlert {
     location: string,
@@ -73,38 +66,34 @@ export class Statistics {
             .value()
     }
 
+    @computed get _itemRecords(): {[itemId: string]: ScanRecord[]} {
+        const itemRecords: {[itemId: string]: ScanRecord[]} = {};
+        for (const rec of this.recordsStore.records) {
+            itemRecords[rec.itemId()] = itemRecords[rec.itemId()] || [];
+            itemRecords[rec.itemId()].push(rec);
+        }
+        return itemRecords;
+    }
+
     public itemRecords(itemId: string): ScanRecord[] {
-        return this.recordsStore.records.filter(r => r.itemId() == itemId);
+        return this._itemRecords[itemId] || [];
     }
 
     public itemRecordsSortedByTime(itemId: string): ScanRecord[] {
         return _.sortBy(this.itemRecords(itemId), r => r.timestampInMilliseconds());
     }
 
-    @computed get itemCountByGateway(): {[partnerName: string]: number} {
+    @computed get _itemCountByGateway(): {[gatewayId: string]: number} {
         return _.chain(this.latestRecordsPerItem)
-            .groupBy(r => r.gatewayId())
+            .groupBy(r => r.gatewayId().toLowerCase())
             .mapValues(recs => recs.length)
-            .value()
+            .value();
     }
 
-    // @computed get itemCountByGatewayAlias(): {[gatewayAlias: string]: number} {
-    //     const counts = _.chain(this.latestRecordsPerItem)
-    //         .groupBy(r => r.gatewayAlias())
-    //         .mapValues(recs => recs.length)
-    //         .value();
-    //     const gateways = ["Original",
-    //         "P&G Manufacturing",
-    //         "P&G Truck",
-    //         "Customer DC or P&G DC",
-    //         "Customer DC or P&G DC Shelf",
-    //         "P&G Customer Store"];
-    //     for (const g of gateways) {
-    //         counts[g] = counts[g] || 0;
-    //     }
-    //     return counts;
-    // }
-    //
+    itemCountByGateway(gatewayId: string): number {
+        return this._itemCountByGateway[gatewayId.toLowerCase()] || 0;
+    }
+
     @computed get alerts(): IAlert[] {
         return this.tooManyScansAlerts;
     }
@@ -119,6 +108,7 @@ export class Statistics {
             .filter(records => records.length > TooManyScansAlertThreshold)
             .map(records => ({
                 timestamp: records[TooManyScansAlertThreshold].timestampAsDate(),
+                category: 'General',
                 alertType: 'Too Many Scans',
                 itemId: records[0].itemId(),
                 count: records.length

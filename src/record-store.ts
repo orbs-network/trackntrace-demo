@@ -1,6 +1,7 @@
 import {observable} from "mobx";
 import {IRawScanRecord, ScanRecord} from "./record";
 import {GatewayConfig} from "./gateway-config";
+import * as _ from "lodash";
 
 export class RecordStore {
 
@@ -17,7 +18,8 @@ export class RecordStore {
         try {
             const now = Date.now();
             await this.fetch();
-            const delay = Math.max(0, 800 - (Date.now() - now));
+            // const delay = Math.max(0, 800 - (Date.now() - now));
+            const delay = 1;
             setTimeout(() => this.ready = true, delay);
 
             const f = async () => {
@@ -43,6 +45,7 @@ export class RecordStore {
                 .filter(r => (r as any).msg != "[object Object]")
                 .filter(r => Object.keys(r).map(k => k.toLowerCase()).find(x => x == "tagid"))
                 .map(raw => new ScanRecord(raw, this.gatewayConfig));
+            this.records = _.sortBy(this.records, r => r.timestampInMilliseconds());
         }
     }
 }

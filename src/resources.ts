@@ -1,5 +1,5 @@
 export function gatewayImage(gatewayId: string): string {
-    return process.env.REACT_APP_BASE_URL + {
+    return process.env.REACT_APP_BASE_URL + ({
         ["3c71bf63e190".toLowerCase()]: '/mixingcenter.svg',
         ["GW98f4ab141D14".toLowerCase()]: '/factory.svg',
         ["GW984fab141D70".toLowerCase()]: '/truck.svg', //"P&G Truck",
@@ -13,7 +13,7 @@ export function gatewayImage(gatewayId: string): string {
         // ["Customer DC or P&G DC".toLowerCase()]:  '/distributioncenter.svg',
         // ["Customer DC or P&G DC Shelf".toLowerCase()]:  '/inventory.svg', //"Customer DC or P&G DC Shelf",
         // ["P&G Customer Store".toLowerCase()]:  '/retailstorage.svg',
-    }[gatewayId.toLowerCase()] || '/mixingcenter.svg';
+    }[gatewayId.toLowerCase()] || '/mixingcenter.svg');
 }
 
 export function partnerBrandImage(brand: string): string {

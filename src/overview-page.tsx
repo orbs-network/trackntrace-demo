@@ -3,7 +3,6 @@ import * as _ from 'lodash';
 import {inject, observer} from "mobx-react";
 import {
     AdjacentScansAlertThresholdMs, IAdjacentScansAlert,
-    IAlert,
     IRepeatedScanAlert,
     ITooManyScansAlert,
     Statistics,
@@ -15,6 +14,15 @@ import {gatewayImage, partnerBrandImage, stageImage} from "./resources";
 import {TablePagination} from "@material-ui/core";
 import {stages, stagesDisplay} from "./record";
 import {GatewayConfig} from "./gateway-config";
+import {OSAAlerts} from "./osa-alerts";
+import {IAlert} from "./alerts";
+import {
+    GOING_DARK_TIMEOUT,
+    ILargeQuantityWentDarkAlert,
+    LARGE_QTY_WENT_DARK_THRESHOLD,
+    ShrinkageAlerts
+} from "./shrinkage-alerts";
+import {AlertsTable} from "./alerts-table";
 
 @observer
 class Databox extends React.Component<{
@@ -82,17 +90,19 @@ class Databox extends React.Component<{
 
 }
 
-@inject('statistics', 'gatewayConfig')
+@inject('statistics', 'gatewayConfig', 'osaAlerts', 'shrinkageAlerts')
 @observer
 export class OverviewPage extends React.Component<{
     statistics: Statistics,
-    gatewayConfig: GatewayConfig
+    gatewayConfig: GatewayConfig,
+    osaAlerts: OSAAlerts
+    shrinkageAlerts: ShrinkageAlerts
 }, {}> {
     @observable private rowsPerPage: number = 5;
     @observable private page: number = 0;
     render() {
-        const byGateway = this.props.statistics.itemCountByGateway;
         const gateways = this.props.gatewayConfig.all().map(cfg => cfg.ID);
+
         return <div style={{
             height: '100%',
             display: 'flex',
@@ -119,11 +129,12 @@ export class OverviewPage extends React.Component<{
                                 colors={["#035093", "#035093", "#4889c2", "#0a4171"]}
                                 images={gateways.map(gateway => gatewayImage(gateway))}
                                 labels={gateways.map(gw => this.props.gatewayConfig.getFor(gw).Alias)}
-                                values={gateways.map(gateway => byGateway[gateway] || 0)}
+                                values={gateways.map(gateway => this.props.statistics.itemCountByGateway(gateway))}
                             />
                         </div>
                     </div>
                 </div>
+                {this.renderAlertsSection()}
             </div>
             <div style={{
                 letterSpacing: 1.13,
@@ -131,6 +142,95 @@ export class OverviewPage extends React.Component<{
             }}>
                 {this.renderDataSection()}
             </div>
+        </div>
+    }
+
+    private renderAlertsSection() {
+        const inventoryNotOnShelfAlerts = this.props.osaAlerts.inventoryNotOnShelfAlerts;
+        const backroomInventoryLowAlerts = this.props.osaAlerts.backroomInventoryLowAlerts;
+        const itemSkippedPOSAlerts = this.props.shrinkageAlerts.itemSkippedPOSAlerts;
+        const itemWentDarkAlerts = this.props.shrinkageAlerts.itemWentDarkAlerts;
+        const largeQtyWentDarkAlerts = this.props.shrinkageAlerts.largeQuantityWentDarkAlerts;
+        const alerts = inventoryNotOnShelfAlerts
+            .concat(backroomInventoryLowAlerts)
+            .concat(itemSkippedPOSAlerts)
+            .concat(itemWentDarkAlerts)
+            .concat(largeQtyWentDarkAlerts);
+
+        return <div style={{marginLeft: 50}}>
+            <div style={{
+                height: 50,
+                borderBottom: '1px solid #ebedf8',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center'
+            }}>
+                <img src={process.env.REACT_APP_BASE_URL + "/alert.svg"} alt={"alert"} style={{padding: "0 10px"}}/> <span>Alerts</span>
+            </div>
+            {
+                alerts.length > 0 ?
+                    <div className={"alerts"}>
+                        <ul>
+                            {alerts.length == 1 && <li>There is <b>1</b> active alert</li>}
+                            {alerts.length > 1 && <li>There are <b>{alerts.length}</b> alerts active</li>}
+                        </ul>
+                        <div>
+                            <AlertsTable alerts={alerts}/>
+                        </div>
+                        {/*<table className={"alerts-table"}>*/}
+                        {/*    <tr>*/}
+                        {/*        <td>TIMESTAMP</td>*/}
+                        {/*        <td>CATEGORY</td>*/}
+                        {/*        <td>ALERT TYPE</td>*/}
+                        {/*        <td>ITEM ID</td>*/}
+                        {/*        <td>GATEWAY</td>*/}
+                        {/*        <td>DESCRIPTION</td>*/}
+                        {/*    </tr>*/}
+                        {/*    {_.sortBy(alerts, alert => -alert.timestamp.getTime())*/}
+                        {/*        .slice(this.page * this.rowsPerPage, (this.page+1) * this.rowsPerPage)*/}
+                        {/*        .map((alert: IAlert) => <tr>*/}
+                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.timestamp.toDateString()}</td>*/}
+                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.category}</td>*/}
+                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.alertType}</td>*/}
+                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.itemId}</td>*/}
+                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.gatewayId}</td>*/}
+                        {/*            <td style={{width: "100%"}}>{*/}
+                        {/*                alert.alertType == 'Repeated Scan' ?*/}
+                        {/*                    <span> Item was scanned twice at location <i>{(alert as IRepeatedScanAlert).location}</i> (previous scan was at {(alert as IRepeatedScanAlert).prevTime.toDateString()})</span>*/}
+                        {/*                    : alert.alertType == 'Too Many Scans' ?*/}
+                        {/*                    <span> Item was scanned <b>{(alert as ITooManyScansAlert).count}</b> times</span>*/}
+                        {/*                    : alert.alertType == 'Adjacent Scans' ?*/}
+                        {/*                        <span> Detected two consecutive scans in different locations in under <b>{Math.ceil((alert as IAdjacentScansAlert).deltaInMs / 1000 / 60)}</b> minutes.</span>*/}
+                        {/*                        : alert.alertType == 'Inventory Not On Shelf' ?*/}
+                        {/*                            <span>Customer shelf contains less than 3 items.</span>*/}
+                        {/*                            : alert.alertType == 'Backroom Inventory Low' ?*/}
+                        {/*                                <span>Customer backroom is empty.</span>*/}
+                        {/*                                : alert.alertType == 'Item Skipped POS' ?*/}
+                        {/*                                    <span>Item went from shelf to front door, skipped point-of-sale.</span>*/}
+                        {/*                                    : alert.alertType == 'Item Went Dark' ?*/}
+                        {/*                                        <span>On-shelf item did not scan for more than {Math.floor((Date.now() - alert.timestamp.getTime()) / 60 / 60 / 1000)} hours.</span>*/}
+                        {/*                                        : alert.alertType == 'Large Quantity Went Dark' ?*/}
+                        {/*                                            <span> <b>{(alert as ILargeQuantityWentDarkAlert).quantity}</b> items went dark.</span>*/}
+                        {/*                                            :*/}
+                        {/*                                            <span></span>*/}
+                        {/*            }</td>`*/}
+                        {/*        </tr>)}*/}
+                        {/*</table>*/}
+                        {/*<TablePagination*/}
+                        {/*    rowsPerPageOptions={[5, 10]}*/}
+                        {/*    component="div"*/}
+                        {/*    count={alerts.length}*/}
+                        {/*    rowsPerPage={this.rowsPerPage}*/}
+                        {/*    page={this.page}*/}
+                        {/*    onChangePage={(e, page) => this.page = page}*/}
+                        {/*    onChangeRowsPerPage={(e) => {*/}
+                        {/*        this.rowsPerPage = parseInt(e.target.value)*/}
+                        {/*    }}*/}
+                        {/*/>*/}
+                    </div>
+                    : <div style={{color: '#bebebe', margin: 10}}>- None -</div>
+            }
+
         </div>
     }
 

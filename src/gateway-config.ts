@@ -1,13 +1,23 @@
 import * as Papa from "papaparse";
 import * as _ from "lodash";
-import {observable} from "mobx";
+import {computed, observable} from "mobx";
+
+export type LocationCategory = "Truck" | "Customer DC Shelf" | "Customer Backroom" | "Customer Retail Shelf" | "POS" | "Front Door" | string;
+export const LocationCategories: LocationCategory[]  = ["Truck", "Customer DC Shelf", "Customer Backroom", "Customer Retail Shelf", "POS", "Front Door"];
 
 export interface IGatewayConfigRecord {
     ID: string;
     Alias?: string;
-    LocationCategory?: string;
+    LocationCategory?: LocationCategory;
     SiteCategory?: string;
     BackroomGatewayId?: string;
+}
+
+function findLocationCategory(cat: string): LocationCategory {
+    if (!cat) {
+        return cat;
+    }
+    return LocationCategories.find(x => x.replace(/\s/g, "").toLowerCase() == cat.replace(/\s/g, "").toLowerCase()) || cat;
 }
 
 export async function loadGatewayConfigRecords(url: string): Promise<IGatewayConfigRecord[]> {
@@ -36,7 +46,7 @@ export async function loadGatewayConfigRecords(url: string): Promise<IGatewayCon
                     .map(r => ({
                         ID: strip(r.id),
                         Alias: strip(r.alias),
-                        LocationCategory: strip(r.locationcategory),
+                        LocationCategory: findLocationCategory(strip(r.locationcategory)),
                         SiteCategory: strip(r.sitecategory),
                         BackroomGatewayId: strip(r.backroomgatewayid)
                     }))
@@ -79,22 +89,38 @@ export class GatewayConfig {
     private prevalidateConfig() {
         for (const rec of this.records) {
             if (rec.ID == null) { throw new Error(`Invalid gateway config: missing gateway ID`); }
+            // if (rec.LocationCategory && LocationCategories.indexOf(rec.LocationCategory) == -1) { throw new Error(`Invalid gateway location category for ${rec.ID}: provided is ${rec.LocationCategory}, allowed values are ${LocationCategories.join(',')}`); }
         }
     }
 
     private postvalidateConfig() {
         for (const rec of this.records) {
-            if (this.getFor(rec.ID) != rec) { throw new Error(`Multiple gateways with same ID: ${rec.ID}`); }
+            if (this.configById[rec.ID.toLowerCase()] != rec) { throw new Error(`Multiple gateways with same ID: ${rec.ID}`); }
             if (rec.BackroomGatewayId && this.getFor(rec.BackroomGatewayId) == null) { throw new Error(`Invalid backroomGatewayId for gateway ${rec.ID}`); }
         }
     }
 
     getFor(gatewayId: string): IGatewayConfigRecord {
-        return this.configById[gatewayId.toLowerCase()] || defaultConfig(gatewayId);
+        return _.cloneDeep(this.configById[gatewayId.toLowerCase()]);
     }
 
     all(): IGatewayConfigRecord[] {
         return _.cloneDeep(this.records);
     }
 
+    @computed get customerBackrooms(): IGatewayConfigRecord[] {
+        return this.all().filter(c => c.LocationCategory == "Customer Backroom");
+    }
+
+    @computed get customerRetailShelves(): IGatewayConfigRecord[] {
+        return this.all().filter(c => c.LocationCategory == "Customer Retail Shelf");
+    }
+
+    @computed get POSes(): IGatewayConfigRecord[] {
+        return this.all().filter(c => c.LocationCategory == "POS");
+    }
+
+    @computed get FrontDoors(): IGatewayConfigRecord[] {
+        return this.all().filter(c => c.LocationCategory == "Front Door");
+    }
 }

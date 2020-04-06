@@ -1,5 +1,5 @@
 import {names} from "./names";
-import {GatewayConfig} from "./gateway-config";
+import {GatewayConfig, LocationCategory} from "./gateway-config";
 
 export type Stage = 'Factory' | 'Mixing' | 'Distribution' | 'Retail';
 export const stages: Stage[] = ['Factory', 'Mixing', 'Distribution', 'Retail'];
@@ -68,7 +68,13 @@ export class ScanRecord {
     }
 
     gatewayAlias(): string {
-        return this.gatewayConfig.getFor(this.rawLowecase.gatewayid).Alias || this.rawLowecase.gatewayid;
+        const cfg = this.gatewayConfig.getFor(this.rawLowecase.gatewayid);
+        return cfg ? cfg.Alias : this.rawLowecase.gatewayid;
+    }
+
+    gatewayLocationCategory(): LocationCategory {
+        const cfg = this.gatewayConfig.getFor(this.rawLowecase.gatewayid);
+        return cfg ? cfg.LocationCategory : null;
     }
 
     recordId(): string {

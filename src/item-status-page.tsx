@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import {PageHeader} from "./page-header";
 
 const twodigits = (n:number) => (n < 10 ? '0' : '') + n.toString();
 
@@ -67,7 +68,9 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
 
     render() {
         const records = this.props.statistics.itemRecords(this.selected);
-        return <div style={{margin: "30px"}}>
+        return <div>
+            <PageHeader title={"Item Scan History"}/>
+            <div style={{margin: "0 0 0 30px"}}>
             <div style={{
                 display: 'flex',
                 alignItems: 'center'
@@ -78,10 +81,6 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                     fontSize: 21,
                     padding: '32px 15px 32px 0'
                 }}>Search an item:</div>
-                {/*<datalist id={"items"}>*/}
-                {/*    {this.props.statistics.itemUIDs.map(uid => <option value={uid}/>)}*/}
-                {/*</datalist>*/}
-                {/*<input value={this.selectedItemUID == null ? this.selected : this.selectedItemUID} onChange={e => this.selectedItemUID = e.target.value} list={"items"}/>*/}
                 {this.props.statistics.itemUIDs.length > 0 && <Autocomplete
                     options={this.props.statistics.itemUIDs}
                     getOptionLabel={option => option}
@@ -236,6 +235,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                     </div>
                 </div>
             </div>}
+        </div>
         </div>
     }
 
