@@ -2,25 +2,21 @@ import * as Papa from "papaparse";
 import * as _ from "lodash";
 import {observable} from "mobx";
 
-declare const AWS: any;
-
 export interface IGatewayConfigRecord {
     ID: string;
     Alias?: string;
     LocationCategory?: string;
     SiteCategory?: string;
-    BackgroomGatewayId?: string;
+    BackroomGatewayId?: string;
 }
 
-export async function loadGatewayConfigRecords(csvS3Key: string): Promise<IGatewayConfigRecord[]> {
+export async function loadGatewayConfigRecords(url: string): Promise<IGatewayConfigRecord[]> {
     const stripKey = (x): string => x.replace(/\s/g, "").toLowerCase();
     const strip = (x) : string => x == null ? null : x.trim() != "" ? x.trim() : null;
 
-    const r = await (new AWS.S3({accessKeyId: 'AKIA2SZDVCH3YP6KEYUN', secretAccessKey: '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', region:'us-west-2', endpoint:'s3-us-west-2.amazonaws.com'}).getObject({Bucket:'trackntrace-config', Key:csvS3Key})).promise()
-    const csvText = r.Body.toString();
-
     return new Promise<IGatewayConfigRecord[]>((resolve, reject) => {
-        Papa.parse(csvText, {
+        Papa.parse(url, {
+            download: true,
             header: true,
             error: (err) => reject(err),
             complete: (results) => {
@@ -42,7 +38,7 @@ export async function loadGatewayConfigRecords(csvS3Key: string): Promise<IGatew
                         Alias: strip(r.alias),
                         LocationCategory: strip(r.locationcategory),
                         SiteCategory: strip(r.sitecategory),
-                        BackgroomGatewayId: strip(r.backgroomgatewayid)
+                        BackroomGatewayId: strip(r.backroomgatewayid)
                     }))
                 );
             }
@@ -68,7 +64,7 @@ export class GatewayConfig {
 
     private async init() {
         try {
-            this.records = await loadGatewayConfigRecords(process.env.REACT_APP_CSV_S3_KEY || "gw-conf.csv");
+            this.records = await loadGatewayConfigRecords(process.env.REACT_APP_CSV_URL || "https://trackntrace-config.s3.amazonaws.com/gw-conf.csv?AWSAccessKeyId=AKIA2SZDVCH33R4YMMVC&Signature=4uE4VaePWxQg3nOR%2Ff%2B5NJzhAUs%3D&Expires=1901521907");
             this.prevalidateConfig();
             for (const rec of this.records) {
                 this.configById[rec.ID.toLowerCase()] = rec;
@@ -89,7 +85,7 @@ export class GatewayConfig {
     private postvalidateConfig() {
         for (const rec of this.records) {
             if (this.getFor(rec.ID) != rec) { throw new Error(`Multiple gateways with same ID: ${rec.ID}`); }
-            if (rec.BackgroomGatewayId && this.getFor(rec.BackgroomGatewayId) == null) { throw new Error(`Invalid backgroomGatewayId for gateway ${rec.ID}`); }
+            if (rec.BackroomGatewayId && this.getFor(rec.BackroomGatewayId) == null) { throw new Error(`Invalid backroomGatewayId for gateway ${rec.ID}`); }
         }
     }
 
