@@ -14,12 +14,13 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import {PageHeader} from "./page-header";
+import {GatewayConfig} from "./gateway-config";
 
 const twodigits = (n:number) => (n < 10 ? '0' : '') + n.toString();
 
-@inject("statistics")
+@inject("statistics", "gatewayConfig")
 @observer
-export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}> {
+export class ItemStatusPage extends React.Component<{statistics: Statistics, gatewayConfig: GatewayConfig}, {}> {
 
     @observable private selectedItemUID: string;
     @observable private ready = false;
@@ -185,7 +186,7 @@ export class ItemStatusPage extends React.Component<{statistics: Statistics}, {}
                                                 verticalAlign: 'middle',
                                                 width: 30,
                                                 height: 30,
-                                                backgroundImage: `url(${gatewayImage(r.gatewayId())})`,
+                                                backgroundImage: `url(${this.props.gatewayConfig.gatewayImage(r.gatewayId())})`,
                                                 backgroundSize: 'contain',
                                                 backgroundRepeat: 'no-repeat',
                                                 whiteSpace: 'nowrap',

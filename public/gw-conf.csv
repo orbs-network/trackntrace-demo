@@ -1,7 +1,8 @@
 id,alias,locationCategory,siteCategory,backroomGatewayId
-3c71bf63e190,Original
-GW98f4ab141D14,P&G Manufacturing
-GW98f4ab141D70,P&G Truck,Customer Backroom
-GW98f4ab141D38,Customer DC or P&G DC,
-GW98f4ab141DF4,Customer DC or P&G DC Shelf,Customer Retail Shelf
-GW98f4ab141D0C,P&G Customer Store
+GW98F4AB141D70,Truck, Truck, P&G
+GW98F4AB141D38,Customer DC Shelf, Customer DC Shelf, Customer
+GW98F4AB141DF4,Customer Backroom, Customer Backroom, Customer, GW98F4AB141D38
+GW98F4AB141DF4_1,Customer Backroom 2, Customer Backroom, Customer,
+GW98F4AB141D0C,Customer Retail Shelf, Customer Retail Shelf, Customer, GW98F4AB141DF4
+GW3C71BF63E190,POS, POS, Customer, GW98F4AB141D0C
+GW98F4AB141D14,Front Door, Front Door, Customer, GW3C71BF63E190

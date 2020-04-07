@@ -74,7 +74,7 @@ export class GatewayConfig {
 
     private async init() {
         try {
-            this.records = await loadGatewayConfigRecords(process.env.REACT_APP_CSV_URL || "https://trackntrace-config.s3.amazonaws.com/gw-conf.csv?AWSAccessKeyId=AKIA2SZDVCH33R4YMMVC&Signature=4uE4VaePWxQg3nOR%2Ff%2B5NJzhAUs%3D&Expires=1901521907");
+            this.records = await loadGatewayConfigRecords(process.env.REACT_APP_GATEWAY_CONFIG_URL || "https://trackntrace-config.s3.amazonaws.com/gw-conf.csv?AWSAccessKeyId=AKIA2SZDVCH33R4YMMVC&Signature=4uE4VaePWxQg3nOR%2Ff%2B5NJzhAUs%3D&Expires=1901521907");
             this.prevalidateConfig();
             for (const rec of this.records) {
                 this.configById[rec.ID.toLowerCase()] = rec;
@@ -106,6 +106,33 @@ export class GatewayConfig {
 
     all(): IGatewayConfigRecord[] {
         return _.cloneDeep(this.records);
+    }
+
+    gatewayImage(gatewayId: string): string {
+        const cfg = this.getFor(gatewayId);
+        const key: string = ((cfg && cfg.LocationCategory) || gatewayId).toLowerCase();
+
+        return process.env.REACT_APP_BASE_URL + ({
+            ["3c71bf63e190".toLowerCase()]: '/mixingcenter.svg',
+            ["GW98f4ab141D14".toLowerCase()]: '/factory.svg',
+            ["GW984fab141D70".toLowerCase()]: '/truck.svg', //"P&G Truck",
+            ["GW98f4ab141D70".toLowerCase()]: '/truck.svg', //"P&G Truck",
+            ["GW98f4ab141D38".toLowerCase()]: '/distributioncenter.svg',
+            ["GW98f4ab141DF4".toLowerCase()]: '/inventory.svg', //"Customer DC or P&G DC Shelf",
+            ["GW98f4ab141D0C".toLowerCase()]: '/retailstorage.svg',
+            ["Truck".toLowerCase()]: '/truck.svg',
+            ["Customer DC Shelf".toLowerCase()]: '/inventory.svg',
+            ["Customer Backroom".toLowerCase()]: '/retailstorage.svg',
+            ["Customer Retail Shelf".toLowerCase()]: "/inventory.svg",
+            ["POS".toLowerCase()]: "/distributioncenter.svg",
+            ["Front Door".toLowerCase()]: "/mixingcenter.svg",
+            ["Original".toLowerCase()]:  '/mixingcenter.svg',
+            ["P&G Manufacturing".toLowerCase()]:  '/factory.svg',
+            ["P&G Truck".toLowerCase()]:  '/truck.svg', //"P&G Truck",
+            ["Customer DC or P&G DC".toLowerCase()]:  '/distributioncenter.svg',
+            ["Customer DC or P&G DC Shelf".toLowerCase()]:  '/inventory.svg', //"Customer DC or P&G DC Shelf",
+            ["P&G Customer Store".toLowerCase()]:  '/retailstorage.svg',
+        }[key] || '/mixingcenter.svg');
     }
 
     @computed get customerBackrooms(): IGatewayConfigRecord[] {

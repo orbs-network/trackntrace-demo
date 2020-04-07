@@ -2,8 +2,9 @@ import {ItemStatusPage} from "./item-status-page";
 import {OverviewPage} from "./overview-page";
 import {OnShelfAvailabilityPage} from "./on-shelf-availability-page";
 import {ShrinkagePage} from "./shrinkage-page";
+import {SettingsPage} from "./settings-page";
 
-type RouteName = "itemStatus" | "overview" | "onShelfAvailability" | "shrinkage";
+type RouteName = "itemStatus" | "overview" | "onShelfAvailability" | "shrinkage" | "settings";
 
 export interface IRoute {
   name: RouteName;
@@ -15,6 +16,14 @@ export interface IRoute {
 }
 
 export const routes: IRoute[] = [
+  {
+    name: 'settings',
+    path: '/settings',
+    menuImg: '/menu-item-settings.svg',
+    cssClass: 'settings',
+    displayIndex: 4,
+    component: SettingsPage
+  },
   {
     name: 'shrinkage',
     path: '/shrinkage',

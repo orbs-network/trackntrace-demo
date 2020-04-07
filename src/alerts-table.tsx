@@ -7,6 +7,8 @@ import {MenuItem, Select, TablePagination} from "@material-ui/core";
 import {observer} from "mobx-react";
 import {observable} from "mobx";
 
+const twodigits = (n:number) => (n < 10 ? '0' : '') + n.toString();
+
 @observer
 export class AlertsTable extends React.Component<{alerts: IAlert[]}> {
     @observable private rowsPerPage: number = 5;
@@ -42,7 +44,7 @@ export class AlertsTable extends React.Component<{alerts: IAlert[]}> {
                     _.sortBy(filteredAlerts, alert => -alert.timestamp.getTime())
                     .slice(this.page * this.rowsPerPage, (this.page+1) * this.rowsPerPage)
                     .map((alert: IAlert) => <tr>
-                        <td style={{whiteSpace: "nowrap"}}>{alert.timestamp.toDateString()}</td>
+                        <td style={{whiteSpace: "nowrap"}}>{alert.timestamp.toDateString()} {twodigits(alert.timestamp.getHours())}:{twodigits(alert.timestamp.getMinutes())}</td>
                         <td style={{whiteSpace: "nowrap"}}>{alert.category}</td>
                         <td style={{whiteSpace: "nowrap"}}>{alert.alertType}</td>
                         <td style={{whiteSpace: "nowrap"}}>{alert.itemId}</td>

@@ -57,7 +57,20 @@ export class SideMenu extends React.Component<{},{}> {
                 }
 
                 .side-menu .menu-item-osa:hover {
-                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-status-hovered.svg);
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-osa-hovered.svg);
+                }
+
+                .side-menu .menu-item-settings {
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-settings.svg);
+                }
+
+                .side-menu .menu-item-settings.selected {
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-settings-selected.svg);
+                    border-right: 3px solid #3e4d73;
+                }
+
+                .side-menu .menu-item-settings:hover {
+                    background-image: url(${process.env.REACT_APP_BASE_URL}/menu-item-settings-hovered.svg);
                 }
             `}}/>
             <div className='side-menu-orbs' style={{padding: 30, marginBottom: 20}}>

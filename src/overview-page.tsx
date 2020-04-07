@@ -9,7 +9,7 @@ import {
     TooManyScansAlertThreshold
 } from "./statistics";
 import {BarChart} from "./bar-chart";
-import {observable, toJS} from "mobx";
+import {computed, observable, toJS} from "mobx";
 import {gatewayImage, partnerBrandImage, stageImage} from "./resources";
 import {TablePagination} from "@material-ui/core";
 import {stages, stagesDisplay} from "./record";
@@ -127,7 +127,7 @@ export class OverviewPage extends React.Component<{
                         <div style={{height: 300, padding: 20, borderBottom: '1px solid #ebedf8'}}>
                             <BarChart
                                 colors={["#035093", "#035093", "#4889c2", "#0a4171"]}
-                                images={gateways.map(gateway => gatewayImage(gateway))}
+                                images={gateways.map(gateway => this.props.gatewayConfig.gatewayImage(gateway))}
                                 labels={gateways.map(gw => this.props.gatewayConfig.getFor(gw).Alias)}
                                 values={gateways.map(gateway => this.props.statistics.itemCountByGateway(gateway))}
                             />
@@ -143,6 +143,27 @@ export class OverviewPage extends React.Component<{
                 {this.renderDataSection()}
             </div>
         </div>
+    }
+
+    @computed get allAlerts(): IAlert[] {
+        return this.props.osaAlerts.alerts
+            .concat(this.props.shrinkageAlerts.alerts)
+    }
+
+    @computed get alertedItemsCount(): number {
+        return _.uniq(
+            this.allAlerts
+            .map(a => a.itemId)
+            .filter(x => x)
+        ).length;
+    }
+
+    @computed get suspectedCounterfietCount(): number {
+        return _.uniq(
+            this.props.shrinkageAlerts.alerts
+            .map(a => a.itemId)
+            .filter(x => x)
+        ).length;
     }
 
     private renderAlertsSection() {
@@ -251,11 +272,11 @@ export class OverviewPage extends React.Component<{
             <div style={{margin:"30px 30px 0 30px"}}>
                 <table className={'data-table'}>
                     <tr>
-                        <td className={'border-right border-bottom'}><Databox title={"Alerted Products"} data={statistics.alertedItems.length}/></td>
+                        <td className={'border-right border-bottom'}><Databox title={"Alerted Products"} data={this.alertedItemsCount}/></td>
                         <td className={'border-left border-bottom'}><Databox title={"Avg. Time in pipeline"} data={statistics.avgPiplineTimePerItemInDays} subText={"DAYS"} decimals={1}/></td>
                     </tr>
                     <tr>
-                        <td className={'border-right border-top'}><Databox title={"Suspected counterfeit"} data={0}/></td>
+                        <td className={'border-right border-top'}><Databox title={"Suspected counterfeit"} data={this.suspectedCounterfietCount}/></td>
                         <td className={'border-left border-top'}><Databox title={"Avg. scans per item"} data={statistics.avgRecordsPerItem} decimals={1}/></td>
                     </tr>
                 </table>

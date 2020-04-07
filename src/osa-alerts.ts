@@ -9,6 +9,8 @@ export class OSAAlerts {
 
     @computed get inventoryNotOnShelfAlerts(): IAlert[] {
         return this.gatewayConfig.customerRetailShelves.map(shelf => {
+            if (!shelf.BackroomGatewayId) return;
+
             const backroom = this.gatewayConfig.getFor(shelf.BackroomGatewayId);
             const onShelf = this.statistics.itemCountByGateway(shelf.ID);
             if (backroom && onShelf < 3) {
