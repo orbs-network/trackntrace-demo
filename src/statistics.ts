@@ -95,23 +95,11 @@ export class Statistics {
     }
 
     @computed get alerts(): IAlert[] {
-        return this.tooManyScansAlerts;
+        return [];
     }
 
     @computed get alertedItems(): string[] {
         return _.uniq(this.alerts.map(a => a.itemId));
     }
 
-    @computed get tooManyScansAlerts(): ITooManyScansAlert[] {
-        return this.itemUIDs
-            .map(uid => this.itemRecordsSortedByTime(uid))
-            .filter(records => records.length > TooManyScansAlertThreshold)
-            .map(records => ({
-                timestamp: records[TooManyScansAlertThreshold].timestampAsDate(),
-                category: 'General',
-                alertType: 'Too Many Scans',
-                itemId: records[0].itemId(),
-                count: records.length
-            }));
-    }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {AlertType, IAlert} from "./alerts";
+import {AlertType, AlertTypes, IAlert} from "./alerts";
 import * as _ from "lodash";
 import {IAdjacentScansAlert, IRepeatedScanAlert, ITooManyScansAlert} from "./statistics";
 import {ILargeQuantityWentDarkAlert} from "./shrinkage-alerts";
@@ -18,7 +18,6 @@ export class AlertsTable extends React.Component<{alerts: IAlert[], style?: any}
 
     render() {
         const {alerts} = this.props;
-        const alertTypes = _.uniq(alerts.map(a => a.alertType));
         const filteredAlerts = alerts.filter(a => this.alertTypeFilter == "all" || a.alertType == this.alertTypeFilter);
         return <div style={{...this.props.style}}>
             <div style={{textAlign: 'right', paddingRight: 20}}>
@@ -28,7 +27,7 @@ export class AlertsTable extends React.Component<{alerts: IAlert[], style?: any}
                     this.page = 0;
                 }}>
                     <MenuItem value={"all"}>- All -</MenuItem>
-                    {alertTypes.map(a => <MenuItem value={a}>{a}</MenuItem>)}
+                    {AlertTypes.map(a => <MenuItem value={a}>{a}</MenuItem>)}
                 </Select>
             </div>
             <table className={"alerts-table"} style={{maxWidth: "100%"}}>
@@ -50,24 +49,25 @@ export class AlertsTable extends React.Component<{alerts: IAlert[], style?: any}
                         <td style={{whiteSpace: "nowrap"}}>{alert.itemId}</td>
                         <td style={{whiteSpace: "nowrap"}}>{alert.gatewayId}</td>
                         <td style={{width: "100%"}}>{
-                            alert.alertType == 'Repeated Scan' ?
-                                <span> Item was scanned twice at location <i>{(alert as IRepeatedScanAlert).location}</i> (previous scan was at {(alert as IRepeatedScanAlert).prevTime.toDateString()})</span>
-                                : alert.alertType == 'Too Many Scans' ?
-                                <span> Item was scanned <b>{(alert as ITooManyScansAlert).count}</b> times</span>
-                                : alert.alertType == 'Adjacent Scans' ?
-                                    <span> Detected two consecutive scans in different locations in under <b>{Math.ceil((alert as IAdjacentScansAlert).deltaInMs / 1000 / 60)}</b> minutes.</span>
-                                    : alert.alertType == 'Inventory Not On Shelf' ?
-                                        <span>Customer shelf contains less than 3 items.</span>
-                                        : alert.alertType == 'Backroom Inventory Low' ?
-                                            <span>Customer backroom is empty.</span>
-                                            : alert.alertType == 'Item Skipped POS' ?
-                                                <span>Item went from shelf to front door, skipped point-of-sale.</span>
-                                                : alert.alertType == 'Item Went Dark' ?
-                                                    <span>On-shelf item did not scan for more than {Math.floor((Date.now() - alert.timestamp.getTime()) / 60 / 60 / 1000)} hours.</span>
-                                                    : alert.alertType == 'Large Quantity Went Dark' ?
-                                                        <span> <b>{(alert as ILargeQuantityWentDarkAlert).quantity}</b> items went dark.</span>
-                                                        :
-                                                        <span></span>
+                            // alert.alertType == 'Repeated Scan' ?
+                            //     <span> Item was scanned twice at location <i>{(alert as IRepeatedScanAlert).location}</i> (previous scan was at {(alert as IRepeatedScanAlert).prevTime.toDateString()})</span>
+                            //     : alert.alertType == 'Too Many Scans' ?
+                            //     <span> Item was scanned <b>{(alert as ITooManyScansAlert).count}</b> times</span>
+                            //     : alert.alertType == 'Adjacent Scans' ?
+                            //         <span> Detected two consecutive scans in different locations in under <b>{Math.ceil((alert as IAdjacentScansAlert).deltaInMs / 1000 / 60)}</b> minutes.</span>
+                            //         :
+                            alert.alertType == 'Inventory Not On Shelf' ?
+                            <span>Customer shelf contains less than 3 items.</span>
+                                : alert.alertType == 'Backroom Inventory Low' ?
+                                    <span>Customer backroom is empty.</span>
+                                    : alert.alertType == 'Item Skipped POS' ?
+                                        <span>Item went from shelf to front door, skipped point-of-sale.</span>
+                                        : alert.alertType == 'Item Went Dark' ?
+                                            <span>On-shelf item did not scan for more than {Math.floor((Date.now() - alert.timestamp.getTime()) / 60 / 60 / 1000)} hours.</span>
+                                            : alert.alertType == 'Large Quantity Went Dark' ?
+                                                <span> <b>{(alert as ILargeQuantityWentDarkAlert).quantity}</b> items went dark.</span>
+                                                :
+                                                <span></span>
                         }</td>
                     </tr>)
                 :   <tr><td colSpan={6} style={{textAlign: "center", color: "grey"}}>- No Alerts - </td></tr>

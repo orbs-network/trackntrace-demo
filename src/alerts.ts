@@ -1,6 +1,8 @@
 import * as _ from "lodash";
 
-export type AlertType = 'Repeated Scan' | 'Too Many Scans' | 'Adjacent Scans' | 'Inventory Not On Shelf' | 'Backroom Inventory Low' | 'Item Skipped POS' | 'Item Went Dark' | 'Large Quantity Went Dark';
+export type AlertType = 'Inventory Not On Shelf' | 'Backroom Inventory Low' | 'Item Skipped POS' | 'Item Went Dark' | 'Large Quantity Went Dark';
+export const AlertTypes: AlertType[] = ['Inventory Not On Shelf', 'Backroom Inventory Low', 'Item Skipped POS', 'Item Went Dark', 'Large Quantity Went Dark'];
+
 export type AlertCategory = 'OSA' | 'Shrinkage' | 'General';
 
 export interface IAlert {
