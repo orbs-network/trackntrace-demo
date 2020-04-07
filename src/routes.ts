@@ -28,7 +28,7 @@ export const routes: IRoute[] = [
     name: 'shrinkage',
     path: '/shrinkage',
     menuImg: '/menu-item-shrinkage.svg',
-    cssClass: 'osa',
+    cssClass: 'shrinkage',
     displayIndex: 3,
     component: ShrinkagePage
   },

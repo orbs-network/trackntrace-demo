@@ -130,7 +130,7 @@ export class SettingsPage extends React.Component<{ gatewayConfig: GatewayConfig
                         </div>
                         <br/>
                         <br/>
-                        Note: the browser must be refreshed for changes to take effect.
+                        Note: the page must be refreshed for changes to take effect.
                         <br/>
                         <br/>
                     </div><br/>
