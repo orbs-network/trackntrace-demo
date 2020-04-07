@@ -123,8 +123,8 @@ export class OnShelfAvailabilityPage extends React.Component<{statistics: Statis
                 { this.osaStats && <div>
                     <div style={{display: 'flex', flexDirection: 'row', paddingBottom: 20, borderBottom: '1px solid grey'}}>
                         <div style={{borderRight: "1px solid grey"}}>
-                            {this.metricBox("ITEMS ON SHELF", "#1d6aac", process.env.REACT_APP_BASE_URL + '/inventory.svg', this.osaStats.itemCountAtGateway)}
-                            {this.metricBox("ITEMS IN STOREROOM", "#008a91", process.env.REACT_APP_BASE_URL + '/mixingcenter.svg', this.osaStats.itemCountAtBackroom)}
+                            {this.metricBox("ITEMS ON SHELF", "#1d6aac", process.env.REACT_APP_BASE_URL + '/shelf-white.svg', this.osaStats.itemCountAtGateway)}
+                            {this.metricBox("ITEMS IN STOREROOM", "#008a91", process.env.REACT_APP_BASE_URL + '/storeroom-white.svg', this.osaStats.itemCountAtBackroom)}
                         </div>
                         <div style={{flex: 1, padding: "0 10px"}}>
                             <div style={{width: 800}}>
