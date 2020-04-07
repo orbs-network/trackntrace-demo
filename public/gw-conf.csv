@@ -6,3 +6,5 @@ GW98F4AB141DF4_1,Customer Backroom 2, Customer Backroom, Customer,
 GW98F4AB141D0C,Customer Retail Shelf, Customer Retail Shelf, Customer, GW98F4AB141DF4
 GW3C71BF63E190,POS, POS, Customer, GW98F4AB141D0C
 GW98F4AB141D14,Front Door, Front Door, Customer, GW3C71BF63E190
+GW98F4AB141DF4_2,Customer Backroom 3, Customer Backroom, Customer,
+GW98F4AB141D0C_1,Customer Retail Shelf 2, Customer Retail Shelf, Customer, GW98F4AB141DF4_2

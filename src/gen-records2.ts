@@ -5,7 +5,9 @@ import {IRawScanRecord, stages} from "./record";
 const hashCode = s => Math.abs(s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0));
 
 const BACKROOM = "GW98F4AB141DF4";
+const BACKROOM3 = "GW98F4AB141DF4_2";
 const SHELF = "GW98F4AB141D0C";
+const SHELF2 = "GW98F4AB141D0C_1";
 const POS = "GW3C71BF63E190";
 const FRONT_DOOR = "GW98F4AB141D14";
 const TRUCK = "GW98F4AB141D70";
@@ -68,6 +70,17 @@ function aBackroomItem(): IRawScanRecord[] {
     ]
 }
 
+function aBackroom3Item(): IRawScanRecord[] {
+    let t = startTime;
+    const nextTime = (maxGap?) => {t = _nextTime(t, maxGap); return t;};
+    nextTime((Date.now() - t) / 2);
+
+    const tagId = `backroom3_${Math.random()}`;
+    return [
+        rec(tagId, nextTime(), BACKROOM3),
+    ]
+}
+
 function aShelfItem(): IRawScanRecord[] {
     let t = startTime;
     const nextTime = (maxGap?) => {t = _nextTime(t, maxGap); return t;};
@@ -76,6 +89,17 @@ function aShelfItem(): IRawScanRecord[] {
     const tagId = `shelf_${Math.random()}`;
     return [
         rec(tagId, nextTime(), SHELF),
+    ]
+}
+
+function aShelf2Item(): IRawScanRecord[] {
+    let t = startTime;
+    const nextTime = (maxGap?) => {t = _nextTime(t, maxGap); return t;};
+    nextTime((Date.now() - t) / 2);
+
+    const tagId = `shelf2_${Math.random()}`;
+    return [
+        rec(tagId, nextTime(), SHELF2),
     ]
 }
 
@@ -179,6 +203,10 @@ export function generateRecords(): IRawScanRecord[] {
         aDCShelfItem(),
         aDCShelfItem(),
         aDCShelfItem(),
+
+        aShelf2Item(),
+        aShelf2Item(),
+        aBackroom3Item(),
     ].reduce((x,y) => x.concat(y), [])
 }
 

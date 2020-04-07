@@ -107,7 +107,7 @@ export class OverviewPage extends React.Component<{
             height: '100%',
             display: 'flex',
             flexDirection: 'row',
-            flexWrap: 'wrap',
+            // flexWrap: 'wrap',
             justifyContent: 'center',
         }}>
             <div style={{display: 'flex', flexDirection:'column', flex: 1, borderRight: '1px solid #ebedf8'}}>
@@ -195,59 +195,7 @@ export class OverviewPage extends React.Component<{
                             {alerts.length == 1 && <li>There is <b>1</b> active alert</li>}
                             {alerts.length > 1 && <li>There are <b>{alerts.length}</b> alerts active</li>}
                         </ul>
-                        <div>
-                            <AlertsTable alerts={alerts}/>
-                        </div>
-                        {/*<table className={"alerts-table"}>*/}
-                        {/*    <tr>*/}
-                        {/*        <td>TIMESTAMP</td>*/}
-                        {/*        <td>CATEGORY</td>*/}
-                        {/*        <td>ALERT TYPE</td>*/}
-                        {/*        <td>ITEM ID</td>*/}
-                        {/*        <td>GATEWAY</td>*/}
-                        {/*        <td>DESCRIPTION</td>*/}
-                        {/*    </tr>*/}
-                        {/*    {_.sortBy(alerts, alert => -alert.timestamp.getTime())*/}
-                        {/*        .slice(this.page * this.rowsPerPage, (this.page+1) * this.rowsPerPage)*/}
-                        {/*        .map((alert: IAlert) => <tr>*/}
-                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.timestamp.toDateString()}</td>*/}
-                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.category}</td>*/}
-                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.alertType}</td>*/}
-                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.itemId}</td>*/}
-                        {/*            <td style={{whiteSpace: "nowrap"}}>{alert.gatewayId}</td>*/}
-                        {/*            <td style={{width: "100%"}}>{*/}
-                        {/*                alert.alertType == 'Repeated Scan' ?*/}
-                        {/*                    <span> Item was scanned twice at location <i>{(alert as IRepeatedScanAlert).location}</i> (previous scan was at {(alert as IRepeatedScanAlert).prevTime.toDateString()})</span>*/}
-                        {/*                    : alert.alertType == 'Too Many Scans' ?*/}
-                        {/*                    <span> Item was scanned <b>{(alert as ITooManyScansAlert).count}</b> times</span>*/}
-                        {/*                    : alert.alertType == 'Adjacent Scans' ?*/}
-                        {/*                        <span> Detected two consecutive scans in different locations in under <b>{Math.ceil((alert as IAdjacentScansAlert).deltaInMs / 1000 / 60)}</b> minutes.</span>*/}
-                        {/*                        : alert.alertType == 'Inventory Not On Shelf' ?*/}
-                        {/*                            <span>Customer shelf contains less than 3 items.</span>*/}
-                        {/*                            : alert.alertType == 'Backroom Inventory Low' ?*/}
-                        {/*                                <span>Customer backroom is empty.</span>*/}
-                        {/*                                : alert.alertType == 'Item Skipped POS' ?*/}
-                        {/*                                    <span>Item went from shelf to front door, skipped point-of-sale.</span>*/}
-                        {/*                                    : alert.alertType == 'Item Went Dark' ?*/}
-                        {/*                                        <span>On-shelf item did not scan for more than {Math.floor((Date.now() - alert.timestamp.getTime()) / 60 / 60 / 1000)} hours.</span>*/}
-                        {/*                                        : alert.alertType == 'Large Quantity Went Dark' ?*/}
-                        {/*                                            <span> <b>{(alert as ILargeQuantityWentDarkAlert).quantity}</b> items went dark.</span>*/}
-                        {/*                                            :*/}
-                        {/*                                            <span></span>*/}
-                        {/*            }</td>`*/}
-                        {/*        </tr>)}*/}
-                        {/*</table>*/}
-                        {/*<TablePagination*/}
-                        {/*    rowsPerPageOptions={[5, 10]}*/}
-                        {/*    component="div"*/}
-                        {/*    count={alerts.length}*/}
-                        {/*    rowsPerPage={this.rowsPerPage}*/}
-                        {/*    page={this.page}*/}
-                        {/*    onChangePage={(e, page) => this.page = page}*/}
-                        {/*    onChangeRowsPerPage={(e) => {*/}
-                        {/*        this.rowsPerPage = parseInt(e.target.value)*/}
-                        {/*    }}*/}
-                        {/*/>*/}
+                        <AlertsTable alerts={alerts}/>
                     </div>
                     : <div style={{color: '#bebebe', margin: 10}}>- None -</div>
             }

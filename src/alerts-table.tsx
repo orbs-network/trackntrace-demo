@@ -10,7 +10,7 @@ import {observable} from "mobx";
 const twodigits = (n:number) => (n < 10 ? '0' : '') + n.toString();
 
 @observer
-export class AlertsTable extends React.Component<{alerts: IAlert[]}> {
+export class AlertsTable extends React.Component<{alerts: IAlert[], style?: any}> {
     @observable private rowsPerPage: number = 5;
     @observable private page: number = 0;
 
@@ -20,7 +20,7 @@ export class AlertsTable extends React.Component<{alerts: IAlert[]}> {
         const {alerts} = this.props;
         const alertTypes = _.uniq(alerts.map(a => a.alertType));
         const filteredAlerts = alerts.filter(a => this.alertTypeFilter == "all" || a.alertType == this.alertTypeFilter);
-        return <div>
+        return <div style={{...this.props.style}}>
             <div style={{textAlign: 'right', paddingRight: 20}}>
                 <div style={{display: 'inline-block', paddingRight: 10}}>Show only:</div>
                 <Select value={this.alertTypeFilter} onChange={(e) => {
@@ -31,7 +31,7 @@ export class AlertsTable extends React.Component<{alerts: IAlert[]}> {
                     {alertTypes.map(a => <MenuItem value={a}>{a}</MenuItem>)}
                 </Select>
             </div>
-            <table className={"alerts-table"}>
+            <table className={"alerts-table"} style={{maxWidth: "100%"}}>
                 <tr>
                     <td>TIMESTAMP</td>
                     <td>CATEGORY</td>

@@ -1,7 +1,7 @@
 [
   {
-    "tagId": "ok_0.882857623242356",
-    "timestamp": 1585701940,
+    "tagId": "ok_0.7089418453972274",
+    "timestamp": 1585746840,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -9,8 +9,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.882857623242356",
-    "timestamp": 1585702423,
+    "tagId": "ok_0.7089418453972274",
+    "timestamp": 1585748276,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -18,44 +18,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.882857623242356",
-    "timestamp": 1585703786,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW3C71BF63E190",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "ok_0.882857623242356",
-    "timestamp": 1585705563,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D14",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "ok_0.38178229179201084",
-    "timestamp": 1585655891,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "ok_0.38178229179201084",
-    "timestamp": 1585656792,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "ok_0.38178229179201084",
-    "timestamp": 1585657709,
+    "tagId": "ok_0.7089418453972274",
+    "timestamp": 1585749422,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -63,8 +27,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.38178229179201084",
-    "timestamp": 1585658036,
+    "tagId": "ok_0.7089418453972274",
+    "timestamp": 1585750432,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -72,8 +36,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.22205757403566673",
-    "timestamp": 1585667220,
+    "tagId": "ok_0.818190162256583",
+    "timestamp": 1585757123,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -81,8 +45,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.22205757403566673",
-    "timestamp": 1585667485,
+    "tagId": "ok_0.818190162256583",
+    "timestamp": 1585757566,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -90,8 +54,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.22205757403566673",
-    "timestamp": 1585668017,
+    "tagId": "ok_0.818190162256583",
+    "timestamp": 1585758693,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -99,8 +63,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.22205757403566673",
-    "timestamp": 1585669015,
+    "tagId": "ok_0.818190162256583",
+    "timestamp": 1585759041,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -108,8 +72,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.005528193230115441",
-    "timestamp": 1585842176,
+    "tagId": "ok_0.5458740666661241",
+    "timestamp": 1585762271,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -117,8 +81,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.005528193230115441",
-    "timestamp": 1585843670,
+    "tagId": "ok_0.5458740666661241",
+    "timestamp": 1585762919,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -126,8 +90,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.005528193230115441",
-    "timestamp": 1585845424,
+    "tagId": "ok_0.5458740666661241",
+    "timestamp": 1585763815,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -135,8 +99,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.005528193230115441",
-    "timestamp": 1585846694,
+    "tagId": "ok_0.5458740666661241",
+    "timestamp": 1585763948,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -144,8 +108,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.8626744142844986",
-    "timestamp": 1585648172,
+    "tagId": "ok_0.03768158533562049",
+    "timestamp": 1585702614,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -153,8 +117,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.8626744142844986",
-    "timestamp": 1585649400,
+    "tagId": "ok_0.03768158533562049",
+    "timestamp": 1585703636,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -162,8 +126,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.8626744142844986",
-    "timestamp": 1585649906,
+    "tagId": "ok_0.03768158533562049",
+    "timestamp": 1585704030,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -171,8 +135,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.8626744142844986",
-    "timestamp": 1585651533,
+    "tagId": "ok_0.03768158533562049",
+    "timestamp": 1585704785,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -180,8 +144,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5898083874577309",
-    "timestamp": 1585647057,
+    "tagId": "ok_0.6603506268913859",
+    "timestamp": 1585836425,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -189,8 +153,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5898083874577309",
-    "timestamp": 1585647345,
+    "tagId": "ok_0.6603506268913859",
+    "timestamp": 1585836818,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -198,8 +162,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5898083874577309",
-    "timestamp": 1585647767,
+    "tagId": "ok_0.6603506268913859",
+    "timestamp": 1585838286,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -207,8 +171,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5898083874577309",
-    "timestamp": 1585647999,
+    "tagId": "ok_0.6603506268913859",
+    "timestamp": 1585839539,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -216,8 +180,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5302046384340982",
-    "timestamp": 1585789818,
+    "tagId": "ok_0.3660453523905913",
+    "timestamp": 1585671584,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -225,8 +189,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5302046384340982",
-    "timestamp": 1585790377,
+    "tagId": "ok_0.3660453523905913",
+    "timestamp": 1585671669,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -234,8 +198,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5302046384340982",
-    "timestamp": 1585792086,
+    "tagId": "ok_0.3660453523905913",
+    "timestamp": 1585672675,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -243,8 +207,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "ok_0.5302046384340982",
-    "timestamp": 1585792966,
+    "tagId": "ok_0.3660453523905913",
+    "timestamp": 1585673006,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -252,8 +216,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_went_dark_0.7055408628591582",
-    "timestamp": 1585909562,
+    "tagId": "ok_0.6442280397165523",
+    "timestamp": 1585680066,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -261,8 +225,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_went_dark_0.026846141283571212",
-    "timestamp": 1585648142,
+    "tagId": "ok_0.6442280397165523",
+    "timestamp": 1585680982,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -270,98 +234,17 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_went_dark_0.28690034213494786",
-    "timestamp": 1585656296,
+    "tagId": "ok_0.6442280397165523",
+    "timestamp": 1585681092,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
+    "gatewayId": "GW3C71BF63E190",
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_went_dark_0.4119709189950811",
-    "timestamp": 1585903430,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_went_dark_0.15015717194424272",
-    "timestamp": 1585682309,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_went_dark_0.22556083166614926",
-    "timestamp": 1585737756,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_went_dark_0.9528553622072282",
-    "timestamp": 1585814893,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_went_dark_0.3244338836783949",
-    "timestamp": 1585895962,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_went_dark_0.46926903834629297",
-    "timestamp": 1585917185,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_skipped_pos_0.8868242151215175",
-    "timestamp": 1585962006,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_skipped_pos_0.8868242151215175",
-    "timestamp": 1585963248,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_skipped_pos_0.8868242151215175",
-    "timestamp": 1585963745,
-    "latitude": "123.456",
-    "longitude": "123.456",
-    "eventType": "PRESENCE",
-    "gatewayId": "GW98F4AB141D0C",
-    "eventValue": "1"
-  },
-  {
-    "tagId": "stolen_skipped_pos_0.8868242151215175",
-    "timestamp": 1585965069,
+    "tagId": "ok_0.6442280397165523",
+    "timestamp": 1585682362,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -369,8 +252,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.5926485641340176",
-    "timestamp": 1585850642,
+    "tagId": "stolen_went_dark_0.4409819753419084",
+    "timestamp": 1585745382,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -378,8 +261,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.5926485641340176",
-    "timestamp": 1585851485,
+    "tagId": "stolen_went_dark_0.056464805047054645",
+    "timestamp": 1585816971,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -387,8 +270,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.5926485641340176",
-    "timestamp": 1585851588,
+    "tagId": "stolen_went_dark_0.9373966904084621",
+    "timestamp": 1585918344,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -396,8 +279,89 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.5926485641340176",
-    "timestamp": 1585852444,
+    "tagId": "stolen_went_dark_0.9412964570949833",
+    "timestamp": 1585767854,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_went_dark_0.5830112387160895",
+    "timestamp": 1585777540,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_went_dark_0.5436155572801589",
+    "timestamp": 1585810054,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_went_dark_0.22616405803568318",
+    "timestamp": 1585677123,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_went_dark_0.17215012920350548",
+    "timestamp": 1585843903,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_went_dark_0.6549894687754725",
+    "timestamp": 1585697342,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.24554414298685767",
+    "timestamp": 1585966098,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.24554414298685767",
+    "timestamp": 1585967673,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.24554414298685767",
+    "timestamp": 1585968360,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.24554414298685767",
+    "timestamp": 1585969796,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -405,8 +369,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.840298289963956",
-    "timestamp": 1585860865,
+    "tagId": "stolen_skipped_pos_0.9356300754709439",
+    "timestamp": 1586131363,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -414,8 +378,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.840298289963956",
-    "timestamp": 1585861453,
+    "tagId": "stolen_skipped_pos_0.9356300754709439",
+    "timestamp": 1586131530,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -423,8 +387,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.840298289963956",
-    "timestamp": 1585861671,
+    "tagId": "stolen_skipped_pos_0.9356300754709439",
+    "timestamp": 1586132164,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -432,8 +396,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.840298289963956",
-    "timestamp": 1585862860,
+    "tagId": "stolen_skipped_pos_0.9356300754709439",
+    "timestamp": 1586133349,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -441,8 +405,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.39827328753891633",
-    "timestamp": 1585846928,
+    "tagId": "stolen_skipped_pos_0.32368013692522424",
+    "timestamp": 1585770162,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -450,8 +414,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.39827328753891633",
-    "timestamp": 1585847630,
+    "tagId": "stolen_skipped_pos_0.32368013692522424",
+    "timestamp": 1585770244,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -459,8 +423,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.39827328753891633",
-    "timestamp": 1585848449,
+    "tagId": "stolen_skipped_pos_0.32368013692522424",
+    "timestamp": 1585771348,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -468,8 +432,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.39827328753891633",
-    "timestamp": 1585849170,
+    "tagId": "stolen_skipped_pos_0.32368013692522424",
+    "timestamp": 1585772210,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -477,8 +441,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.24918247502288127",
-    "timestamp": 1585803258,
+    "tagId": "stolen_skipped_pos_0.241719604350646",
+    "timestamp": 1585815355,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -486,8 +450,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.24918247502288127",
-    "timestamp": 1585803520,
+    "tagId": "stolen_skipped_pos_0.241719604350646",
+    "timestamp": 1585816829,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -495,8 +459,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.24918247502288127",
-    "timestamp": 1585803937,
+    "tagId": "stolen_skipped_pos_0.241719604350646",
+    "timestamp": 1585817997,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -504,8 +468,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.24918247502288127",
-    "timestamp": 1585804339,
+    "tagId": "stolen_skipped_pos_0.241719604350646",
+    "timestamp": 1585818594,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -513,8 +477,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.6912348120301381",
-    "timestamp": 1585847582,
+    "tagId": "stolen_skipped_pos_0.5425891575887671",
+    "timestamp": 1585879509,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -522,8 +486,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.6912348120301381",
-    "timestamp": 1585848329,
+    "tagId": "stolen_skipped_pos_0.5425891575887671",
+    "timestamp": 1585880667,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -531,8 +495,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.6912348120301381",
-    "timestamp": 1585849237,
+    "tagId": "stolen_skipped_pos_0.5425891575887671",
+    "timestamp": 1585880899,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -540,8 +504,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.6912348120301381",
-    "timestamp": 1585850314,
+    "tagId": "stolen_skipped_pos_0.5425891575887671",
+    "timestamp": 1585881419,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -549,8 +513,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9728046569384705",
-    "timestamp": 1585977842,
+    "tagId": "stolen_skipped_pos_0.4863251229826784",
+    "timestamp": 1585758042,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -558,8 +522,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9728046569384705",
-    "timestamp": 1585978863,
+    "tagId": "stolen_skipped_pos_0.4863251229826784",
+    "timestamp": 1585758289,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -567,8 +531,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9728046569384705",
-    "timestamp": 1585979405,
+    "tagId": "stolen_skipped_pos_0.4863251229826784",
+    "timestamp": 1585759464,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -576,8 +540,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9728046569384705",
-    "timestamp": 1585979965,
+    "tagId": "stolen_skipped_pos_0.4863251229826784",
+    "timestamp": 1585759553,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -585,8 +549,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9409708345723373",
-    "timestamp": 1586113785,
+    "tagId": "stolen_skipped_pos_0.32241991063325415",
+    "timestamp": 1585800446,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -594,8 +558,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9409708345723373",
-    "timestamp": 1586115452,
+    "tagId": "stolen_skipped_pos_0.32241991063325415",
+    "timestamp": 1585801280,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -603,8 +567,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9409708345723373",
-    "timestamp": 1586116282,
+    "tagId": "stolen_skipped_pos_0.32241991063325415",
+    "timestamp": 1585801732,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -612,8 +576,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9409708345723373",
-    "timestamp": 1586117657,
+    "tagId": "stolen_skipped_pos_0.32241991063325415",
+    "timestamp": 1585802188,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -621,8 +585,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.8838470673034085",
-    "timestamp": 1586073270,
+    "tagId": "stolen_skipped_pos_0.24217822853737125",
+    "timestamp": 1585809722,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -630,8 +594,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.8838470673034085",
-    "timestamp": 1586073487,
+    "tagId": "stolen_skipped_pos_0.24217822853737125",
+    "timestamp": 1585810248,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -639,8 +603,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.8838470673034085",
-    "timestamp": 1586074283,
+    "tagId": "stolen_skipped_pos_0.24217822853737125",
+    "timestamp": 1585811934,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -648,8 +612,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.8838470673034085",
-    "timestamp": 1586076039,
+    "tagId": "stolen_skipped_pos_0.24217822853737125",
+    "timestamp": 1585812112,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -657,8 +621,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9001296365106781",
-    "timestamp": 1585804095,
+    "tagId": "stolen_skipped_pos_0.7219946100107391",
+    "timestamp": 1585882841,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -666,8 +630,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9001296365106781",
-    "timestamp": 1585805594,
+    "tagId": "stolen_skipped_pos_0.7219946100107391",
+    "timestamp": 1585884272,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -675,8 +639,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9001296365106781",
-    "timestamp": 1585806066,
+    "tagId": "stolen_skipped_pos_0.7219946100107391",
+    "timestamp": 1585884912,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -684,8 +648,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9001296365106781",
-    "timestamp": 1585807169,
+    "tagId": "stolen_skipped_pos_0.7219946100107391",
+    "timestamp": 1585885569,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -693,8 +657,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.20020999754049496",
-    "timestamp": 1585947316,
+    "tagId": "stolen_skipped_pos_0.868178692037338",
+    "timestamp": 1585787948,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -702,8 +666,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.20020999754049496",
-    "timestamp": 1585948819,
+    "tagId": "stolen_skipped_pos_0.868178692037338",
+    "timestamp": 1585789183,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -711,8 +675,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.20020999754049496",
-    "timestamp": 1585950522,
+    "tagId": "stolen_skipped_pos_0.868178692037338",
+    "timestamp": 1585790310,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -720,8 +684,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.20020999754049496",
-    "timestamp": 1585951838,
+    "tagId": "stolen_skipped_pos_0.868178692037338",
+    "timestamp": 1585790775,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -729,8 +693,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.870676150807286",
-    "timestamp": 1585967533,
+    "tagId": "stolen_skipped_pos_0.7011877613125712",
+    "timestamp": 1586069059,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -738,8 +702,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.870676150807286",
-    "timestamp": 1585968901,
+    "tagId": "stolen_skipped_pos_0.7011877613125712",
+    "timestamp": 1586069277,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -747,8 +711,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.870676150807286",
-    "timestamp": 1585970073,
+    "tagId": "stolen_skipped_pos_0.7011877613125712",
+    "timestamp": 1586069329,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -756,8 +720,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.870676150807286",
-    "timestamp": 1585970111,
+    "tagId": "stolen_skipped_pos_0.7011877613125712",
+    "timestamp": 1586069611,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -765,8 +729,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9360397748245677",
-    "timestamp": 1585844594,
+    "tagId": "stolen_skipped_pos_0.860781381615404",
+    "timestamp": 1585879727,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -774,8 +738,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9360397748245677",
-    "timestamp": 1585846353,
+    "tagId": "stolen_skipped_pos_0.860781381615404",
+    "timestamp": 1585879825,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -783,8 +747,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9360397748245677",
-    "timestamp": 1585846407,
+    "tagId": "stolen_skipped_pos_0.860781381615404",
+    "timestamp": 1585879908,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -792,8 +756,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9360397748245677",
-    "timestamp": 1585846987,
+    "tagId": "stolen_skipped_pos_0.860781381615404",
+    "timestamp": 1585881182,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -801,8 +765,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2060265304799178",
-    "timestamp": 1586048703,
+    "tagId": "stolen_skipped_pos_0.268391083102107",
+    "timestamp": 1585893892,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -810,8 +774,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2060265304799178",
-    "timestamp": 1586049026,
+    "tagId": "stolen_skipped_pos_0.268391083102107",
+    "timestamp": 1585894218,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -819,8 +783,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2060265304799178",
-    "timestamp": 1586050642,
+    "tagId": "stolen_skipped_pos_0.268391083102107",
+    "timestamp": 1585895628,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -828,8 +792,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2060265304799178",
-    "timestamp": 1586052056,
+    "tagId": "stolen_skipped_pos_0.268391083102107",
+    "timestamp": 1585896860,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -837,8 +801,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2251246422880646",
-    "timestamp": 1585778447,
+    "tagId": "stolen_skipped_pos_0.26483579964045956",
+    "timestamp": 1585859178,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -846,8 +810,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2251246422880646",
-    "timestamp": 1585780057,
+    "tagId": "stolen_skipped_pos_0.26483579964045956",
+    "timestamp": 1585860281,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -855,8 +819,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2251246422880646",
-    "timestamp": 1585780153,
+    "tagId": "stolen_skipped_pos_0.26483579964045956",
+    "timestamp": 1585860388,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -864,8 +828,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.2251246422880646",
-    "timestamp": 1585781262,
+    "tagId": "stolen_skipped_pos_0.26483579964045956",
+    "timestamp": 1585861945,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -873,8 +837,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.16039880738371415",
-    "timestamp": 1585765132,
+    "tagId": "stolen_skipped_pos_0.19607444467386204",
+    "timestamp": 1585819861,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -882,8 +846,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.16039880738371415",
-    "timestamp": 1585766145,
+    "tagId": "stolen_skipped_pos_0.19607444467386204",
+    "timestamp": 1585821537,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -891,8 +855,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.16039880738371415",
-    "timestamp": 1585766787,
+    "tagId": "stolen_skipped_pos_0.19607444467386204",
+    "timestamp": 1585823031,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -900,8 +864,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.16039880738371415",
-    "timestamp": 1585766926,
+    "tagId": "stolen_skipped_pos_0.19607444467386204",
+    "timestamp": 1585824122,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -909,8 +873,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.0854331437425897",
-    "timestamp": 1586176610,
+    "tagId": "stolen_skipped_pos_0.0414930709849155",
+    "timestamp": 1585975435,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -918,8 +882,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.0854331437425897",
-    "timestamp": 1586176995,
+    "tagId": "stolen_skipped_pos_0.0414930709849155",
+    "timestamp": 1585976138,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -927,8 +891,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.0854331437425897",
-    "timestamp": 1586178289,
+    "tagId": "stolen_skipped_pos_0.0414930709849155",
+    "timestamp": 1585976262,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -936,8 +900,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.0854331437425897",
-    "timestamp": 1586179395,
+    "tagId": "stolen_skipped_pos_0.0414930709849155",
+    "timestamp": 1585977892,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -945,8 +909,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9279979149582398",
-    "timestamp": 1586233760,
+    "tagId": "stolen_skipped_pos_0.5994501165031985",
+    "timestamp": 1586185880,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -954,8 +918,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9279979149582398",
-    "timestamp": 1586234596,
+    "tagId": "stolen_skipped_pos_0.5994501165031985",
+    "timestamp": 1586186869,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -963,8 +927,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9279979149582398",
-    "timestamp": 1586236326,
+    "tagId": "stolen_skipped_pos_0.5994501165031985",
+    "timestamp": 1586187474,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -972,8 +936,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.9279979149582398",
-    "timestamp": 1586237150,
+    "tagId": "stolen_skipped_pos_0.5994501165031985",
+    "timestamp": 1586189073,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -981,8 +945,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.27955020973015854",
-    "timestamp": 1586184317,
+    "tagId": "stolen_skipped_pos_0.36038457275277547",
+    "timestamp": 1586198945,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -990,8 +954,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.27955020973015854",
-    "timestamp": 1586185479,
+    "tagId": "stolen_skipped_pos_0.36038457275277547",
+    "timestamp": 1586199027,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -999,8 +963,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.27955020973015854",
-    "timestamp": 1586185988,
+    "tagId": "stolen_skipped_pos_0.36038457275277547",
+    "timestamp": 1586200107,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1008,8 +972,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "stolen_skipped_pos_0.27955020973015854",
-    "timestamp": 1586187177,
+    "tagId": "stolen_skipped_pos_0.36038457275277547",
+    "timestamp": 1586200552,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1017,8 +981,44 @@
     "eventValue": "1"
   },
   {
-    "tagId": "backroom_0.6514709026416474",
-    "timestamp": 1585659448,
+    "tagId": "stolen_skipped_pos_0.9634955384876007",
+    "timestamp": 1586224298,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.9634955384876007",
+    "timestamp": 1586225825,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.9634955384876007",
+    "timestamp": 1586226481,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "stolen_skipped_pos_0.9634955384876007",
+    "timestamp": 1586228662,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D14",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "backroom_0.0351389048595272",
+    "timestamp": 1585756209,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1026,8 +1026,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "backroom_0.7317553177046145",
-    "timestamp": 1585755417,
+    "tagId": "backroom_0.6481835219536947",
+    "timestamp": 1585872283,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1035,8 +1035,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.11608662154887428",
-    "timestamp": 1585748202,
+    "tagId": "shelf_0.7135025153851557",
+    "timestamp": 1585794823,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1044,8 +1044,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.046020553197404945",
-    "timestamp": 1585735507,
+    "tagId": "shelf_0.32232207839594773",
+    "timestamp": 1585777106,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1053,8 +1053,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.5756244694329895",
-    "timestamp": 1585695718,
+    "tagId": "shelf_0.016927700963968784",
+    "timestamp": 1585840167,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1062,8 +1062,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.13105867364890345",
-    "timestamp": 1585722639,
+    "tagId": "shelf_0.5381666553823958",
+    "timestamp": 1585663706,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1071,8 +1071,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.4535046665686484",
-    "timestamp": 1585716630,
+    "tagId": "shelf_0.26846951743826986",
+    "timestamp": 1585649861,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1080,8 +1080,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.38186535900882923",
-    "timestamp": 1585889064,
+    "tagId": "shelf_0.4592384389147297",
+    "timestamp": 1585776712,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1089,8 +1089,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.05001248402438785",
-    "timestamp": 1585681972,
+    "tagId": "shelf_0.10374795389139413",
+    "timestamp": 1585795642,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1098,8 +1098,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.7550269716349411",
-    "timestamp": 1585823339,
+    "tagId": "shelf_0.06373161048507536",
+    "timestamp": 1585902153,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1107,8 +1107,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.876915864335061",
-    "timestamp": 1585904710,
+    "tagId": "shelf_0.5078294826479861",
+    "timestamp": 1585711340,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1116,8 +1116,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.8128173272852857",
-    "timestamp": 1585710654,
+    "tagId": "shelf_0.10140579371679159",
+    "timestamp": 1585788005,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1125,8 +1125,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.516407018650836",
-    "timestamp": 1585652618,
+    "tagId": "shelf_0.07235852397379072",
+    "timestamp": 1585774781,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1134,8 +1134,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.940174894228315",
-    "timestamp": 1585928311,
+    "tagId": "shelf_0.10912910073280302",
+    "timestamp": 1585723816,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1143,8 +1143,8 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.9579215178139631",
-    "timestamp": 1585737484,
+    "tagId": "shelf_0.875380945574934",
+    "timestamp": 1585792903,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
@@ -1152,12 +1152,39 @@
     "eventValue": "1"
   },
   {
-    "tagId": "shelf_0.7467025547299058",
-    "timestamp": 1585645947,
+    "tagId": "shelf_0.8745113591775187",
+    "timestamp": 1585698297,
     "latitude": "123.456",
     "longitude": "123.456",
     "eventType": "PRESENCE",
     "gatewayId": "GW98F4AB141D38",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "shelf2_0.54489607164558",
+    "timestamp": 1585727743,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C_1",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "shelf2_0.6098835038871269",
+    "timestamp": 1585836049,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141D0C_1",
+    "eventValue": "1"
+  },
+  {
+    "tagId": "backroom3_0.46331483202416246",
+    "timestamp": 1585652133,
+    "latitude": "123.456",
+    "longitude": "123.456",
+    "eventType": "PRESENCE",
+    "gatewayId": "GW98F4AB141DF4_2",
     "eventValue": "1"
   }
 ]
