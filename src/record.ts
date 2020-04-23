@@ -48,7 +48,7 @@ export class ScanRecord {
     }
 
     timestampInMilliseconds(): number {
-        return this.rawLowecase.timestamp * 1000;
+        return this.rawLowecase.timestamp;
     }
 
     timestampAsDate(): Date {
