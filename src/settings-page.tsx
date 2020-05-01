@@ -147,7 +147,9 @@ export class SettingsPage extends React.Component<{ gatewayConfig: GatewayConfig
 
     private deleteAllRecordsClicked() {
         if (window.confirm("Are you sure you want to delete all scan records?")) {
-            // TODO remove
+            fetch("https://png-collector.herokuapp.com/clearAllEvents?iamsure=YES", {
+                method: "POST",
+            })
         }
     }
 }
